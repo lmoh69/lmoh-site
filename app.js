@@ -13,6 +13,7 @@ var CFG={
 };
 document.head.insertAdjacentHTML('beforeend','<link rel="stylesheet" href="v2.css">');
 document.body.classList.add('lay-'+['a','b','c'][SEED%3]);
+var sj=document.createElement('script');sj.src='selection.js';document.body.appendChild(sj);
 
 /* --- Structure ajoutée : onglet Naissance, section Films, mariage au bord du lac --- */
 var ddList=document.querySelector('#dd ul');
