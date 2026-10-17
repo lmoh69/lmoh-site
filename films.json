@@ -1,0 +1,13 @@
+{
+  "labels": {
+    "teaser-court": "Le grand jour",
+    "teaser-camille": "Château et bougies",
+    "teaser-1mn": "Au bord de l’eau",
+    "teaser-reseau": "Élégance",
+    "teaser-black": "Rose et parfum"
+  },
+  "proFilms": ["teaser-black"],
+  "hide": [],
+  "order": [],
+  "proPhotos": ["portrait/p1084061", "portrait/p1329201", "portrait/p1005204", "culinaire/p1114665", "details/p1005105", "portrait/p1006272", "culinaire/p1114669", "details/p1048523"]
+}
