@@ -9,6 +9,12 @@ def slug(s):
     s = re.sub(r'\.[A-Za-z0-9]+$', '', s)
     return re.sub(r'[^a-z0-9]+', '-', s.lower()).strip('-')[:60] or 'media'
 
+def poster(mp4):
+    d = float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', mp4],
+                             capture_output=True, text=True).stdout.strip() or 10)
+    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-ss', f'{d*0.35:.1f}', '-i', mp4, '-frames:v', '1',
+                    '-q:v', '3', mp4[:-4] + '.jpg'], check=True)
+
 folders = json.load(open('tools/folders.json'))
 os.makedirs('tmp', exist_ok=True)
 log = []
@@ -34,8 +40,7 @@ for jf in sorted(glob.glob('jobs/*.json')):
                 subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-ss', start, '-i', src, '-t', dur,
                     '-vf', 'scale=1280:-2:flags=lanczos,format=yuv420p', '-c:v', 'libx264', '-preset', 'slow',
                     '-crf', '28', '-c:a', 'aac', '-b:a', '96k', '-movflags', '+faststart', out], check=True)
-                subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-ss', '3', '-i', out, '-frames:v', '1',
-                    '-q:v', '3', f'video/{name}.jpg'], check=True)
+                poster(out)
                 subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', out, '-vf',
                     'fps=1/3,scale=320:-2,tile=5x4', '-frames:v', '1', f'video/{name}-planche.jpg'], check=True)
                 os.remove(src)
@@ -53,6 +58,12 @@ for jf in sorted(glob.glob('jobs/*.json')):
         except Exception as e:
             log.append(f"ERR {it.get('name', it.get('id'))} {e}")
     os.remove(jf)
+
+if not os.path.exists('video/.posters-v2'):
+    for f in glob.glob('video/*.mp4'):
+        poster(f)
+    if os.path.isdir('video'):
+        open('video/.posters-v2', 'w').write('ok')
 
 media = {'photos': {}, 'videos': []}
 for f in sorted(glob.glob('photos/*/*.jpg')):
