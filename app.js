@@ -37,8 +37,26 @@ function fig(src,w,h,alt){var f=document.createElement('figure');f.className='rv
 
 /* --- Bandeau qui défile --- */
 var track=document.getElementById('track');
-function fillStrip(pool){track.innerHTML='';var pick=shuffle(pool,7).slice(0,10);pick.concat(pick).forEach(function(s){var i=document.createElement('img');i.src=s;i.alt='';i.loading='lazy';i.decoding='async';track.appendChild(i)})}
-fillStrip(['photos/mariage/m09.jpg','photos/couple/p1032947.jpg','photos/details/p1091438.jpg','photos/couple/p1505330.jpg','photos/nb/p1043230.jpg','photos/mariage/m32.jpg','photos/couple/p1288184.jpg','photos/portrait/p1077179.jpg','photos/soiree/p1352238.jpg','photos/mariage/m11.jpg']);
+/* Bandeau : des séquences de photos cohérentes (même ambiance, même preset couleur) */
+var STRIP=[
+ ['Blanc & lumière',['mariage/m05','mariage/m07','mariage/m09','portrait/p1117317','portrait/p1066260','couple/p1103825','mariage2/n27']],
+ ['Vert & nature',['couple/p1057396','couple/p1350242','details/p1010509','mariage/m12','mariage/m13','mariage/m15','mariage2/n04']],
+ ['Lumière dorée',['couple/p1077148','portrait/p1077179','portrait/p1287706','couple/p1350698','couple/p1114280','mariage/m10','mariage/m31']],
+ ['Détails intimistes',['couple/p1352972','details/p1091438','details/p1048523','details/p1048334','details/p1005105']],
+ ['Soirée',['soiree/p1352128','soiree/p1352177','soiree/p1352181','soiree/p1352186','soiree/p1352238','soiree/p1077286']],
+ ['Noir & blanc',['nb/p1066154','mariage2/n11','nb/p1347947','mariage/m24','nb/p1632337','nb/p1505331','nb/p1020416']]
+];
+function buildStrip(){
+ var start=SEED%STRIP.length,seq=[];
+ for(var k=0;k<STRIP.length;k++){var g=STRIP[(start+k)%STRIP.length];seq.push({label:g[0]});shuffle(g[1],31+k).forEach(function(s){seq.push({src:'photos/'+s+'.jpg'})})}
+ track.innerHTML='';
+ seq.concat(seq).forEach(function(it,n){
+  if(it.label){var d=document.createElement('div');d.className='strip-label';d.innerHTML='<span>'+it.label+'</span>';track.appendChild(d)}
+  else{var i=document.createElement('img');i.src=it.src;i.alt='';if(n>12)i.loading='lazy';i.decoding='async';track.appendChild(i)}
+ });
+ track.style.animationDuration=(seq.length*5)+'s';
+}
+buildStrip();
 
 /* --- Hero : diaporama, remplacé par le teaser du mois --- */
 var hero=document.getElementById('hero'),slides=[].slice.call(document.querySelectorAll('#slides .slide')),si=0,timer=null;
@@ -96,8 +114,6 @@ function applyMedia(m){
  /* Couvertures de l'accueil et bandeau du mois */
  var covers={'/mariage':P.mariage,'/couple':P.couple,'/noir-et-blanc':P.nb,'/portrait':P.portrait};
  document.querySelectorAll('.cats a').forEach(function(a,k){var pool=(covers[a.getAttribute('href').slice(1)]||[]).filter(function(it){return it[2]>=it[1]*1.2||k===0});if(pool.length){var pick=shuffle(pool,21+k)[0];a.querySelector('img').src=pick[0]}});
- var pool=[];['mariage','couple','nb','portrait','details','soiree','grossesse','mariage2'].forEach(function(c){(P[c]||[]).forEach(function(it){if(c!=='mariage2'||CFG.mariage2.indexOf(it[0].split('/').pop().replace('.jpg',''))>-1)pool.push(it[0])})});
- if(pool.length>12)fillStrip(pool);
  var vids=m.videos||[];fillFilms(vids);
  var heroes=vids.filter(function(v){return CFG.heroExclude.indexOf(v[0].split('/').pop().replace('.mp4',''))<0});
  if(heroes.length){var h=heroes[SEED%heroes.length];heroVideo(h[0],h[1])}
