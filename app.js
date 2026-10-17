@@ -8,12 +8,14 @@ function shuffle(arr,salt){var r=rng(SEED*97+(salt||0)),a=arr.slice();for(var i=
 var CFG={
  labels:{'teaser-court':'Le grand jour','teaser-camille':'Château et bougies','teaser-1mn':'Au bord de l’eau','teaser-reseau':'Élégance','teaser-black':'Les détails'},
  heroExclude:['teaser-black'],
+ proFilms:['teaser-black'],
  mariage2:['n01','n02','n03','n04','n05','n11','n12','n13','n14','n15','n18','n19','n20','n21','n22','n23','n24','n25','n26','n27'],
  pages:{couple:'/couple',nb:'/noir-et-blanc',portrait:'/portrait',culinaire:'/culinaire',grossesse:'/naissance'}
 };
 document.head.insertAdjacentHTML('beforeend','<link rel="stylesheet" href="v2.css">');
 document.body.classList.add('lay-'+['a','b','c'][SEED%3]);
 var sj=document.createElement('script');sj.src='selection.js';document.body.appendChild(sj);
+var fj=document.createElement('script');fj.src='films.js';document.body.appendChild(fj);
 
 /* --- Structure ajoutée : onglet Naissance, section Films, mariage au bord du lac --- */
 var ddList=document.querySelector('#dd ul');
@@ -29,7 +31,7 @@ var cn=document.querySelector('.chap-nav');if(cn)cn.insertAdjacentHTML('beforeen
 var pages=[].slice.call(document.querySelectorAll('.page'));
 var links=[].slice.call(document.querySelectorAll('nav.main a'));
 var hdr=document.getElementById('hdr'),nav=document.getElementById('nav'),burger=document.getElementById('burger'),dd=document.getElementById('dd'),ddBtn=document.getElementById('ddBtn');
-var folio=['/mariage','/couple','/noir-et-blanc','/portrait','/naissance','/culinaire'];
+var folio=['/mariage','/couple','/noir-et-blanc','/portrait','/naissance','/pro','/culinaire','/films'];
 var current=null;
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -6% 0px',threshold:.05});
 function watch(p){p.querySelectorAll('.rv,.rvi').forEach(function(el){if(reduce){el.classList.add('in')}else if(!el.classList.contains('in')){io.observe(el)}})}
@@ -80,15 +82,18 @@ var vmv=vm.querySelector('video');
 function closeVm(){vm.classList.remove('open');vmv.pause()}
 vm.querySelector('button').onclick=closeVm;vm.addEventListener('click',function(e){if(e.target===vm)closeVm()});
 function label(src){var k=src.split('/').pop().replace('.mp4','');return CFG.labels[k]||k.replace(/^teaser-/,'').replace(/-/g,' ').replace(/^./,function(c){return c.toUpperCase()})}
+function isPro(v){var k=v[0].split('/').pop().replace('.mp4','');return /^pro-/.test(k)||CFG.proFilms.indexOf(k)>-1}
 function fillFilms(videos){
  var g=document.getElementById('filmGrid');g.innerHTML='';
- shuffle(videos,3).forEach(function(v){
+ videos=videos.filter(function(v){return !isPro(v)});
+ shuffle(videos,3).slice(0,6).forEach(function(v){
   var b=document.createElement('button');b.type='button';b.className='rv';
   b.innerHTML='<div class="poster"><img src="'+v[1]+'" alt="" loading="lazy"><span class="play"><span><svg viewBox="0 0 20 24" aria-hidden="true"><path d="M0 0l20 12L0 24z"/></svg></span></span></div><span class="lbl">'+label(v[0])+'</span>';
   b.onclick=function(){vmv.src=v[0];vmv.poster=v[1];vm.classList.add('open');vmv.muted=false;var p=vmv.play();if(p&&p.catch)p.catch(function(){})};
   g.appendChild(b);
  });
  if(!videos.length)document.getElementById('films').hidden=true;
+ if(!document.getElementById('allFilms'))g.insertAdjacentHTML('afterend','<div class="cta-band" id="allFilms"><a class="btn line" href="#/films">Voir tous les films</a></div>');
 }
 
 /* --- Galeries : ordre renouvelé chaque mois + nouvelles photos du Drive --- */
@@ -115,17 +120,18 @@ function applyMedia(m){
  var covers={'/mariage':P.mariage,'/couple':P.couple,'/noir-et-blanc':P.nb,'/portrait':P.portrait};
  document.querySelectorAll('.cats a').forEach(function(a,k){var pool=(covers[a.getAttribute('href').slice(1)]||[]).filter(function(it){return it[2]>=it[1]*1.2||k===0});if(pool.length){var pick=shuffle(pool,21+k)[0];a.querySelector('img').src=pick[0]}});
  var vids=m.videos||[];fillFilms(vids);
- var heroes=vids.filter(function(v){return CFG.heroExclude.indexOf(v[0].split('/').pop().replace('.mp4',''))<0});
+ var heroes=vids.filter(function(v){return !isPro(v)&&CFG.heroExclude.indexOf(v[0].split('/').pop().replace('.mp4',''))<0});
  if(heroes.length){var h=heroes[SEED%heroes.length];heroVideo(h[0],h[1])}
  if(current)watch(document.querySelector('.page.show'));
 }
-fetch('media.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(applyMedia).catch(function(){});
+Promise.all([fetch('media.json',{cache:'no-cache'}).then(function(r){return r.json()}),fetch('films.json',{cache:'no-cache'}).then(function(r){return r.json()}).catch(function(){return {}})]).then(function(a){var c=a[1]||{};Object.keys(c.labels||{}).forEach(function(k){CFG.labels[k]=c.labels[k]});CFG.proFilms=CFG.proFilms.concat(c.proFilms||[]);CFG.heroExclude=CFG.heroExclude.concat(c.hide||[],c.heroExclude||[]);applyMedia(a[0])}).catch(function(){});
 
 /* --- Navigation --- */
 function onScroll(){var y=window.scrollY;hdr.classList.toggle('compact',y>40);document.body.classList.toggle('onhero',current==='/'&&y<hero.offsetHeight-90)}
 window.addEventListener('scroll',onScroll,{passive:true});
 function route(){
  var r=(location.hash.replace(/^#/,'')||'/');
+ pages=[].slice.call(document.querySelectorAll('.page'));
  var hit=pages.filter(function(p){return p.dataset.page===r})[0]||pages[0];
  current=hit.dataset.page;
  pages.forEach(function(p){p.classList.toggle('show',p===hit)});
