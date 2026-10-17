@@ -1,0 +1,55 @@
+ERR 1s2wAsY3IpXScegS9J5G1hf7oSlheYyuj Failed to retrieve file url:
+
+	Cannot retrieve the public link of the file. You may need to change
+	the permission to 'Anyone with the link', or have had many accesses.
+	Check FAQ in https://github.com/wkentaro/gdown?tab=readme-ov-file#faq.
+
+You may still be able to access the file from the browser:
+
+	https://drive.google.com/uc?id=1s2wAsY3IpXScegS9J5G1hf7oSlheYyuj
+
+but Gdown can't. Please check connections and permissions.
+ERR 1kksEuiF5OwYfd-ezRp_sODuIHdBnloTO Failed to retrieve file url:
+
+	Cannot retrieve the public link of the file. You may need to change
+	the permission to 'Anyone with the link', or have had many accesses.
+	Check FAQ in https://github.com/wkentaro/gdown?tab=readme-ov-file#faq.
+
+You may still be able to access the file from the browser:
+
+	https://drive.google.com/uc?id=1kksEuiF5OwYfd-ezRp_sODuIHdBnloTO
+
+but Gdown can't. Please check connections and permissions.
+ERR 1SQVs-McFsvrm6BwYSstEogscaiosNZAN Failed to retrieve file url:
+
+	Cannot retrieve the public link of the file. You may need to change
+	the permission to 'Anyone with the link', or have had many accesses.
+	Check FAQ in https://github.com/wkentaro/gdown?tab=readme-ov-file#faq.
+
+You may still be able to access the file from the browser:
+
+	https://drive.google.com/uc?id=1SQVs-McFsvrm6BwYSstEogscaiosNZAN
+
+but Gdown can't. Please check connections and permissions.
+ERR 1g7t3hpvFkqTO5b0ff2oMhBe5P1e7mWPs Failed to retrieve file url:
+
+	Cannot retrieve the public link of the file. You may need to change
+	the permission to 'Anyone with the link', or have had many accesses.
+	Check FAQ in https://github.com/wkentaro/gdown?tab=readme-ov-file#faq.
+
+You may still be able to access the file from the browser:
+
+	https://drive.google.com/uc?id=1g7t3hpvFkqTO5b0ff2oMhBe5P1e7mWPs
+
+but Gdown can't. Please check connections and permissions.
+ERR 1pFPDXTP2sB7zkBFm-pzThKGCVo-EVGEm Failed to retrieve file url:
+
+	Cannot retrieve the public link of the file. You may need to change
+	the permission to 'Anyone with the link', or have had many accesses.
+	Check FAQ in https://github.com/wkentaro/gdown?tab=readme-ov-file#faq.
+
+You may still be able to access the file from the browser:
+
+	https://drive.google.com/uc?id=1pFPDXTP2sB7zkBFm-pzThKGCVo-EVGEm
+
+but Gdown can't. Please check connections and permissions.
