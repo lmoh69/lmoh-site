@@ -1,4 +1,4 @@
-ERR 1s2wAsY3IpXScegS9J5G1hf7oSlheYyuj Failed to retrieve file url:
+ERR 1zgJVZm_FJ7VEcMDjn-HvoT2MvSZUhj-K Failed to retrieve file url:
 
 	Cannot retrieve the public link of the file. You may need to change
 	the permission to 'Anyone with the link', or have had many accesses.
@@ -6,10 +6,10 @@ ERR 1s2wAsY3IpXScegS9J5G1hf7oSlheYyuj Failed to retrieve file url:
 
 You may still be able to access the file from the browser:
 
-	https://drive.google.com/uc?id=1s2wAsY3IpXScegS9J5G1hf7oSlheYyuj
+	https://drive.google.com/uc?id=1zgJVZm_FJ7VEcMDjn-HvoT2MvSZUhj-K
 
 but Gdown can't. Please check connections and permissions.
-ERR 1kksEuiF5OwYfd-ezRp_sODuIHdBnloTO Failed to retrieve file url:
+ERR 1-LSA2R3u3BBrommgk_d2fK97g3UtwNJs Failed to retrieve file url:
 
 	Cannot retrieve the public link of the file. You may need to change
 	the permission to 'Anyone with the link', or have had many accesses.
@@ -17,10 +17,10 @@ ERR 1kksEuiF5OwYfd-ezRp_sODuIHdBnloTO Failed to retrieve file url:
 
 You may still be able to access the file from the browser:
 
-	https://drive.google.com/uc?id=1kksEuiF5OwYfd-ezRp_sODuIHdBnloTO
+	https://drive.google.com/uc?id=1-LSA2R3u3BBrommgk_d2fK97g3UtwNJs
 
 but Gdown can't. Please check connections and permissions.
-ERR 1SQVs-McFsvrm6BwYSstEogscaiosNZAN Failed to retrieve file url:
+ERR 1exdBgx0tdlTVfrvmWcPgtkRnkaIA7x8X Failed to retrieve file url:
 
 	Cannot retrieve the public link of the file. You may need to change
 	the permission to 'Anyone with the link', or have had many accesses.
@@ -28,10 +28,10 @@ ERR 1SQVs-McFsvrm6BwYSstEogscaiosNZAN Failed to retrieve file url:
 
 You may still be able to access the file from the browser:
 
-	https://drive.google.com/uc?id=1SQVs-McFsvrm6BwYSstEogscaiosNZAN
+	https://drive.google.com/uc?id=1exdBgx0tdlTVfrvmWcPgtkRnkaIA7x8X
 
 but Gdown can't. Please check connections and permissions.
-ERR 1g7t3hpvFkqTO5b0ff2oMhBe5P1e7mWPs Failed to retrieve file url:
+ERR 1745yu-LeGh6yexV3--hRGc95aXzqqDzY Failed to retrieve file url:
 
 	Cannot retrieve the public link of the file. You may need to change
 	the permission to 'Anyone with the link', or have had many accesses.
@@ -39,10 +39,10 @@ ERR 1g7t3hpvFkqTO5b0ff2oMhBe5P1e7mWPs Failed to retrieve file url:
 
 You may still be able to access the file from the browser:
 
-	https://drive.google.com/uc?id=1g7t3hpvFkqTO5b0ff2oMhBe5P1e7mWPs
+	https://drive.google.com/uc?id=1745yu-LeGh6yexV3--hRGc95aXzqqDzY
 
 but Gdown can't. Please check connections and permissions.
-ERR 1pFPDXTP2sB7zkBFm-pzThKGCVo-EVGEm Failed to retrieve file url:
+ERR 1o37_A-X0pHr0JTX8FgMxVpUKaNZWhwW6 Failed to retrieve file url:
 
 	Cannot retrieve the public link of the file. You may need to change
 	the permission to 'Anyone with the link', or have had many accesses.
@@ -50,6 +50,132 @@ ERR 1pFPDXTP2sB7zkBFm-pzThKGCVo-EVGEm Failed to retrieve file url:
 
 You may still be able to access the file from the browser:
 
-	https://drive.google.com/uc?id=1pFPDXTP2sB7zkBFm-pzThKGCVo-EVGEm
+	https://drive.google.com/uc?id=1o37_A-X0pHr0JTX8FgMxVpUKaNZWhwW6
 
 but Gdown can't. Please check connections and permissions.
+ERR 1dFG83qEnmAxgiTy5ax5gVt5bV24MH4uw Failed to retrieve file url:
+
+	Cannot retrieve the public link of the file. You may need to change
+	the permission to 'Anyone with the link', or have had many accesses.
+	Check FAQ in https://github.com/wkentaro/gdown?tab=readme-ov-file#faq.
+
+You may still be able to access the file from the browser:
+
+	https://drive.google.com/uc?id=1dFG83qEnmAxgiTy5ax5gVt5bV24MH4uw
+
+but Gdown can't. Please check connections and permissions.
+ERR 1xMbqNQM5g6eMvPEOnCnbfLgSPmLwsxOq Failed to retrieve file url:
+
+	Cannot retrieve the public link of the file. You may need to change
+	the permission to 'Anyone with the link', or have had many accesses.
+	Check FAQ in https://github.com/wkentaro/gdown?tab=readme-ov-file#faq.
+
+You may still be able to access the file from the browser:
+
+	https://drive.google.com/uc?id=1xMbqNQM5g6eMvPEOnCnbfLgSPmLwsxOq
+
+but Gdown can't. Please check connections and permissions.
+ERR 1hUfzvOR_hjiMXru1SiKGpPB1yrI3V1kq Failed to retrieve file url:
+
+	Cannot retrieve the public link of the file. You may need to change
+	the permission to 'Anyone with the link', or have had many accesses.
+	Check FAQ in https://github.com/wkentaro/gdown?tab=readme-ov-file#faq.
+
+You may still be able to access the file from the browser:
+
+	https://drive.google.com/uc?id=1hUfzvOR_hjiMXru1SiKGpPB1yrI3V1kq
+
+but Gdown can't. Please check connections and permissions.
+ERR 1fh033mwb9CXiewdtNjPNHR6gD9xhoEd5 Failed to retrieve file url:
+
+	Cannot retrieve the public link of the file. You may need to change
+	the permission to 'Anyone with the link', or have had many accesses.
+	Check FAQ in https://github.com/wkentaro/gdown?tab=readme-ov-file#faq.
+
+You may still be able to access the file from the browser:
+
+	https://drive.google.com/uc?id=1fh033mwb9CXiewdtNjPNHR6gD9xhoEd5
+
+but Gdown can't. Please check connections and permissions.
+ERR 1wCRRqOdbkgtBMceddagMipshnFVWxZFD Failed to retrieve file url:
+
+	Cannot retrieve the public link of the file. You may need to change
+	the permission to 'Anyone with the link', or have had many accesses.
+	Check FAQ in https://github.com/wkentaro/gdown?tab=readme-ov-file#faq.
+
+You may still be able to access the file from the browser:
+
+	https://drive.google.com/uc?id=1wCRRqOdbkgtBMceddagMipshnFVWxZFD
+
+but Gdown can't. Please check connections and permissions.
+ERR 18N2p-qTLa0hIjsnDiYwOp3GVtmKucQpl Failed to retrieve file url:
+
+	Cannot retrieve the public link of the file. You may need to change
+	the permission to 'Anyone with the link', or have had many accesses.
+	Check FAQ in https://github.com/wkentaro/gdown?tab=readme-ov-file#faq.
+
+You may still be able to access the file from the browser:
+
+	https://drive.google.com/uc?id=18N2p-qTLa0hIjsnDiYwOp3GVtmKucQpl
+
+but Gdown can't. Please check connections and permissions.
+ERR 1ePupcEK0NHC2H230cKXrIDWfCs8ysMWp Failed to retrieve file url:
+
+	Cannot retrieve the public link of the file. You may need to change
+	the permission to 'Anyone with the link', or have had many accesses.
+	Check FAQ in https://github.com/wkentaro/gdown?tab=readme-ov-file#faq.
+
+You may still be able to access the file from the browser:
+
+	https://drive.google.com/uc?id=1ePupcEK0NHC2H230cKXrIDWfCs8ysMWp
+
+but Gdown can't. Please check connections and permissions.
+ERR 1jMdNATMmGG8jXgJGU8TH_A_DyJSkNG8K Failed to retrieve file url:
+
+	Cannot retrieve the public link of the file. You may need to change
+	the permission to 'Anyone with the link', or have had many accesses.
+	Check FAQ in https://github.com/wkentaro/gdown?tab=readme-ov-file#faq.
+
+You may still be able to access the file from the browser:
+
+	https://drive.google.com/uc?id=1jMdNATMmGG8jXgJGU8TH_A_DyJSkNG8K
+
+but Gdown can't. Please check connections and permissions.
+ERR 1dZpMkl4pSASNjHZUmj51JgqPlzhO72o3 Failed to retrieve file url:
+
+	Cannot retrieve the public link of the file. You may need to change
+	the permission to 'Anyone with the link', or have had many accesses.
+	Check FAQ in https://github.com/wkentaro/gdown?tab=readme-ov-file#faq.
+
+You may still be able to access the file from the browser:
+
+	https://drive.google.com/uc?id=1dZpMkl4pSASNjHZUmj51JgqPlzhO72o3
+
+but Gdown can't. Please check connections and permissions.
+ok photos/mariage2/n01.jpg
+ok photos/mariage2/n02.jpg
+ok photos/mariage2/n03.jpg
+ok photos/mariage2/n04.jpg
+ok photos/mariage2/n05.jpg
+ok photos/mariage2/n06.jpg
+ok photos/mariage2/n07.jpg
+ok photos/mariage2/n08.jpg
+ok photos/mariage2/n09.jpg
+ok photos/mariage2/n10.jpg
+ok photos/mariage2/n11.jpg
+ok photos/mariage2/n12.jpg
+ok photos/mariage2/n13.jpg
+ok photos/mariage2/n14.jpg
+ok photos/mariage2/n15.jpg
+ok photos/mariage2/n16.jpg
+ok photos/mariage2/n17.jpg
+ok photos/mariage2/n18.jpg
+ok photos/mariage2/n19.jpg
+ok photos/mariage2/n20.jpg
+ok photos/mariage2/n21.jpg
+ok photos/mariage2/n22.jpg
+ok photos/mariage2/n23.jpg
+ok photos/mariage2/n24.jpg
+ok photos/mariage2/n25.jpg
+ok photos/mariage2/n26.jpg
+ok photos/mariage2/n27.jpg
