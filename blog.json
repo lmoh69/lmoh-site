@@ -1,0 +1,61 @@
+{
+  "stories": [
+    {
+      "slug": "m-et-n",
+      "initials": "M. & N.",
+      "title": "Un lac, un palace et un baiser sur l’eau",
+      "teaser": "Une arrivée en voiture de prestige, un baisemain plein de tendresse, la mairie en famille et une échappée en bateau sur le lac.",
+      "cover": "mariage2/n26",
+      "blocks": [
+        {"t": "p", "text": "Certains mariages ont un décor de cinéma. Celui de M. & N. s’est écrit au bord d’un lac aux eaux turquoise, avec les montagnes en toile de fond."},
+        {"t": "img", "src": ["mariage2/n01"]},
+        {"t": "p", "text": "N. est impeccable : costume sombre, nœud papillon, et cette assurance tranquille devant un hôtel aux allures de palace. Il arrive en voiture, vitre baissée, avec le sourire de celui qui sait que la journée va être belle."},
+        {"t": "img", "src": ["mariage2/n03", "mariage2/n12"]},
+        {"t": "p", "text": "Puis vient l’un de mes moments préférés : N. s’incline et pose un baiser sur la main de M., assise dans sa robe de dentelle. Un geste d’un autre temps, d’une élégance folle."},
+        {"t": "img", "src": ["mariage2/n13"]},
+        {"t": "img", "src": ["mariage2/n11", "mariage2/n27"]},
+        {"t": "q", "text": "Je cherche les mains, les regards, ces détails qui racontent tout sans un mot."},
+        {"t": "p", "text": "Autour d’eux, la famille et les amis : des accolades qui durent, des éclats de rire, des regards émus. C’est souvent là que je me fais le plus discret, pour ne rien manquer."},
+        {"t": "img", "src": ["mariage2/n14", "mariage2/n15"]},
+        {"t": "p", "text": "À la mairie, le temps ralentit. L’entrée de M., l’échange des alliances, la signature : chaque geste compte, et chacun mérite sa photo."},
+        {"t": "img", "src": ["mariage2/n18", "mariage2/n19"]},
+        {"t": "img", "src": ["mariage2/n20"]},
+        {"t": "p", "text": "À la sortie, l’ambiance explose : les proches entourent les mariés, ça chante, ça danse, ça applaudit. Le genre de chaos joyeux que j’adore photographier."},
+        {"t": "img", "src": ["mariage2/n22", "mariage2/n23"]},
+        {"t": "p", "text": "Et pour finir, une parenthèse rien qu’à eux deux : une balade en bateau sur le lac. Le vent dans le voile, la main de N. qui frôle l’eau, un baiser à l’abri du tulle."},
+        {"t": "img", "src": ["mariage2/n24", "mariage2/n25"]},
+        {"t": "img", "src": ["mariage2/n26"]},
+        {"t": "video", "src": "video/film-lac.mp4", "poster": "video/film-lac.jpg", "caption": "Le film de M. & N., en quelques secondes. À regarder avec le son."},
+        {"t": "p", "text": "Merci M. & N. pour cette journée lumineuse, et pour votre confiance."}
+      ]
+    },
+    {
+      "slug": "a-et-t",
+      "initials": "A. & T.",
+      "title": "Un pont dans les sapins et un oui sous l’arche",
+      "teaser": "Des témoins qui ne tiennent pas en place, un vieux pont ferroviaire au milieu de la forêt et une cérémonie à ciel ouvert.",
+      "cover": "mariage/m13",
+      "blocks": [
+        {"t": "p", "text": "Chez A. & T., les préparatifs ont le goût des grandes complicités. Un proche ajuste le nœud papillon de T., les témoins l’entourent, le chambrent, le serrent dans leurs bras. Le genre d’ambiance qui détend tout le monde, et que j’adore photographier."},
+        {"t": "img", "src": ["mariage/m02", "mariage/m04"]},
+        {"t": "p", "text": "Côté mariée, la robe attend près de la fenêtre. A. face à sa robe : un de ces instants suspendus que je guette toujours. Puis le vent s’invite dans le voile, et il n’y a plus qu’à suivre la lumière."},
+        {"t": "img", "src": ["mariage/m05"]},
+        {"t": "img", "src": ["mariage/m07", "mariage/m10"]},
+        {"t": "q", "text": "Les plus belles images arrivent souvent quand on arrête de poser."},
+        {"t": "p", "text": "Pour le premier regard, direction un vieux pont ferroviaire perdu au milieu des sapins. Le genre de lieu qu’on ne trouve pas dans les magazines, et c’est exactement ce qui le rend unique. A. et T. se retrouvent, le bouquet pris entre eux deux."},
+        {"t": "img", "src": ["mariage/m12"]},
+        {"t": "img", "src": ["mariage/m13", "mariage/m15"]},
+        {"t": "p", "text": "On longe les rails, on descend jusqu’à la rivière. Ici, je parle peu : je les laisse marcher, se chuchoter des choses que je n’entends pas, et je photographie ce qui se passe entre eux."},
+        {"t": "img", "src": ["mariage/m14"]},
+        {"t": "img", "src": ["mariage/m16", "mariage/m31"]},
+        {"t": "p", "text": "Vient le temps des promesses. À la mairie d’abord, entourés de leurs proches, puis pour une cérémonie à ciel ouvert, sous une arche de voilages et de verdure. Entre deux discours, un proche serre T. dans ses bras : une accolade qui en dit plus long que tous les mots."},
+        {"t": "img", "src": ["mariage/m20", "mariage/m21"]},
+        {"t": "img", "src": ["mariage/m24"]},
+        {"t": "img", "src": ["mariage/m26", "mariage/m28"]},
+        {"t": "p", "text": "Et puis il y a ce moment que j’attends à chaque mariage : la sortie. Les applaudissements, les sourires, et ce baiser sous l’arche qui referme le chapitre des promesses pour ouvrir celui de la fête."},
+        {"t": "img", "src": ["mariage/m29", "mariage/m32"]},
+        {"t": "p", "text": "Merci A. & T. de m’avoir fait une place dans cette journée. Vous m’avez offert ce que je préfère : de vrais moments, sans artifice."}
+      ]
+    }
+  ]
+}
