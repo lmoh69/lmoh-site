@@ -1,6 +1,10 @@
 /* Pages Films et Pro (photo + vidéo), alimentées par media.json et films.json */
 (function(){
 var bj=document.createElement('script');bj.src='blog.js';document.body.appendChild(bj);
+/* Liens Journal et version anglaise */
+var navUl=document.querySelector('nav.main > ul');if(navUl){var bl=navUl.querySelector('a[href="#/blog"]');if(bl)bl.parentNode.insertAdjacentHTML('afterend','<li><a href="journal/">Journal</a></li>');navUl.insertAdjacentHTML('beforeend','<li><a class="lang" href="en/" hreflang="en" lang="en" title="English version">EN</a></li>')}
+var fn=document.querySelector('footer nav');if(fn)fn.insertAdjacentHTML('beforeend','<a href="journal/">Journal</a><a href="en/" hreflang="en">English</a>');
+document.head.insertAdjacentHTML('beforeend','<style>nav.main a.lang{border:1px solid currentColor;padding:.25rem .6rem;letter-spacing:.18em}nav.main a.lang::after{display:none}</style>');
 var dd=document.querySelector('#dd ul');if(!dd)return;
 var cul=dd.querySelector('a[href="#/culinaire"]');
 cul.parentNode.insertAdjacentHTML('beforebegin','<li><a href="#/pro">Pro</a></li>');
