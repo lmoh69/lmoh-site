@@ -1,0 +1,23 @@
+name: Sauvegarde mensuelle
+on:
+  schedule:
+    - cron: '0 2 1 * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: media
+  cancel-in-progress: false
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python tools/backup.py
+      - name: Publier la sauvegarde
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="sauvegarde-$(date +%Y-%m)"
+          gh release delete "$TAG" -y --cleanup-tag || true
+          gh release create "$TAG" /tmp/sauvegarde/* --latest --title "Sauvegarde $(date +%Y-%m)" --notes "Sauvegarde complete du site LMOH Photography. Chaque archive ZIP s'ouvre seule ; ensemble elles contiennent tout le site."
