@@ -1,10 +1,13 @@
 """Genere les pages statiques indexables : Journal FR/EN, accueil anglais, sitemap, robots, llms.txt.
 Contenu : journal/articles.json. Lance par le robot GitHub a chaque modification."""
-import json, os, html
+import json, os, html, glob
 D = json.load(open('journal/articles.json', encoding='utf-8'))
 import datetime
 TODAY = datetime.date.today().isoformat()
 # Publication programmee : un article n'apparait qu'a partir de sa date "publish" (invisible sur le site)
+POSTS = [json.load(open(f, encoding='utf-8')) for f in glob.glob('journal/posts/*.json')]
+POSTS.sort(key=lambda a: a.get('publish', ''), reverse=True)
+D['articles'] = POSTS + D['articles']
 D['articles'] = [a for a in D['articles'] if a.get('publish', '0000-00-00') <= TODAY]
 B, BR = D['base'], D['brand']
 E = lambda s: html.escape(s, quote=True)
@@ -110,8 +113,14 @@ for a in D['articles']:
             secs += f'<h2>{E(s["h2"])}</h2>' + ''.join(f'<p>{E(p)}</p>' for p in s['p'])
             if s.get('img'):
                 secs += f'<figure class="jfig">{img(R, s["img"], s.get("img_alt", ""))}</figure>'
+            elif s.get('video'):
+                v = s['video']
+                secs += (f'<figure class="jfig"><video controls playsinline preload="none" poster="{R}video/{v}.jpg" '
+                         f'src="{R}video/{v}.mp4"></video></figure>')
         faq = ''.join(f'<details><summary>{E(q["q"])}</summary><p>{E(q["a"])}</p></details>' for q in x['faq'])
-        ra, rl = bySlug[x['related']]
+        ra, rl = bySlug.get(x.get('related'), (None, None))
+        if not ra or ra is a:
+            ra = next((o for o in D['articles'] if o is not a), a); rl = lang
         rx = ra[rl]
         body = (f'<article class="wrap jarticle top-space">'
                 f'<nav class="crumbs" aria-label="Fil d’Ariane"><a href="{R if lang == "fr" else R + "en/"}">{t["home"]}</a> / <a href="{R + jpath(lang).lstrip("/")}">{t["journal"]}</a></nav>'
