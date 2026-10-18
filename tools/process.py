@@ -76,17 +76,19 @@ for f in glob.glob('photos/*/*.jpg'):
     im = Image.open(f); im.thumbnail((900, 900), Image.LANCZOS)
     im.save(t, 'JPEG', quality=78, optimize=True, progressive=True)
 
-# Extraits d'ouverture : 20 s, 960 px, sans son, image d'apercu = premiere image (transition sans saut)
-os.makedirs('video/hero', exist_ok=True)
+# Extraits d'ouverture : 20 s, 960 px, avec le son (fondu d'entree et de sortie pour une boucle douce),
+# image d'apercu = premiere image (transition sans saut)
+os.makedirs('video/clip', exist_ok=True)
 for f in glob.glob('video/*.mp4'):
-    out = 'video/hero/' + os.path.basename(f)
+    out = 'video/clip/' + os.path.basename(f)
     if os.path.exists(out): continue
     d = duration(f)
     if d < 8: continue
     st = d * 0.18; ln = min(20.0, d - st - 0.5)
-    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-ss', f'{st:.1f}', '-i', f, '-t', f'{ln:.1f}', '-an',
+    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-ss', f'{st:.1f}', '-i', f, '-t', f'{ln:.1f}',
         '-vf', 'scale=960:-2:flags=lanczos,format=yuv420p', '-c:v', 'libx264', '-preset', 'slow', '-crf', '30',
-        '-g', '48', '-movflags', '+faststart', out], check=True)
+        '-g', '48', '-af', f'afade=t=in:d=0.8,afade=t=out:st={max(0.0, ln - 1.5):.1f}:d=1.5',
+        '-c:a', 'aac', '-b:a', '96k', '-movflags', '+faststart', out], check=True)
     subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', out, '-frames:v', '1', '-q:v', '4', out[:-4] + '.jpg'], check=True)
 
 media = {'photos': {}, 'videos': []}
@@ -95,7 +97,7 @@ for f in sorted(glob.glob('photos/*/*.jpg')):
     media['photos'].setdefault(f.split('/')[1], []).append([f, w, h])
 for f in sorted(glob.glob('video/*.mp4')):
     media['videos'].append([f, f[:-4] + '.jpg'])
-media['hero'] = [[f, f[:-4] + '.jpg'] for f in sorted(glob.glob('video/hero/*.mp4'))]
+media['hero'] = [[f, f[:-4] + '.jpg'] for f in sorted(glob.glob('video/clip/*.mp4'))]
 json.dump(media, open('media.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 os.makedirs('jobs', exist_ok=True)
 open('jobs/journal.txt', 'w').write('\n'.join(log) + '\n')
