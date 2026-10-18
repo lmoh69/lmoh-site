@@ -1,9 +1,9 @@
 name: Pages Journal et anglais
 on:
   push:
-    paths: ['journal/articles.json', 'tools/build_site.py']
+    paths: ['journal/**', 'tools/build_site.py', 'tools/process_ai.py', 'tools/ai_request.py', 'tools/catalog.json']
   schedule:
-    - cron: '0 5 * * 2,5'
+    - cron: '0 3 * * 2,5'
   workflow_dispatch:
 permissions:
   contents: write
@@ -15,11 +15,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - run: python tools/process_ai.py
       - run: python tools/build_site.py
+      - run: python tools/ai_request.py
       - run: |
           git config user.name "lmoh-robot"
           git config user.email "lmoh-robot@users.noreply.github.com"
           git add -A
-          git commit -m "Pages Journal et anglais regenerees" || echo "Rien a publier"
+          git commit -m "Journal : pages regenerees" || echo "Rien a publier"
           git pull --rebase -q || true
           git push
