@@ -17,8 +17,15 @@ for r in rows:
     if not sujet or statut.startswith(('PAUSE', 'PUBLI')) or sujet in done:
         continue
     pick = r; break
+def _ok(r):
+    r = r + [''] * 2
+    st, su = r[0].strip().upper(), r[1].strip()
+    return bool(su) and not st.startswith(('PAUSE', 'PUBLI')) and su not in done
+restants = sum(1 for r in rows if _ok(r))
 if not pick:
-    json.dump({}, open('journal/request.json', 'w')); print('Aucun sujet en attente'); raise SystemExit(0)
+    json.dump({}, open('journal/request.json', 'w'))
+    json.dump({"restants": 0}, open('journal/request-meta.json', 'w'))
+    print('Aucun sujet en attente'); raise SystemExit(0)
 statut, sujet, kw_fr, kw2, kw_en, categorie, notes = [x.strip() for x in pick]
 
 cat = json.load(open('tools/catalog.json', encoding='utf-8'))
@@ -75,6 +82,6 @@ req = {"systemInstruction": {"parts": [{"text": SYSTEM}]},
        "contents": [{"role": "user", "parts": [{"text": prompt}]}],
        "generationConfig": {"responseMimeType": "application/json", "temperature": 0.9}}
 json.dump(req, open('journal/request.json', 'w', encoding='utf-8'), ensure_ascii=False)
-json.dump({"sujet": sujet, "kw_fr": kw_fr, "kw_en": kw_en, "categorie": categorie},
+json.dump({"sujet": sujet, "kw_fr": kw_fr, "kw_en": kw_en, "categorie": categorie, "restants": restants},
           open('journal/request-meta.json', 'w', encoding='utf-8'), ensure_ascii=False)
 print('Prochain sujet :', sujet)
