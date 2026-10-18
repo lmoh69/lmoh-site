@@ -9,9 +9,12 @@ def slug(s):
     s = re.sub(r'\.[A-Za-z0-9]+$', '', s)
     return re.sub(r'[^a-z0-9]+', '-', s.lower()).strip('-')[:60] or 'media'
 
+def duration(p):
+    return float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', p],
+                                capture_output=True, text=True).stdout.strip() or 10)
+
 def poster(mp4):
-    d = float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', mp4],
-                             capture_output=True, text=True).stdout.strip() or 10)
+    d = duration(mp4)
     subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-ss', f'{d*0.35:.1f}', '-i', mp4, '-frames:v', '1',
                     '-q:v', '3', mp4[:-4] + '.jpg'], check=True)
 
@@ -65,12 +68,34 @@ if not os.path.exists('video/.posters-v2'):
     if os.path.isdir('video'):
         open('video/.posters-v2', 'w').write('ok')
 
+# Miniatures legeres (900 px) pour les galeries et le bandeau
+for f in glob.glob('photos/*/*.jpg'):
+    t = 'thumbs/' + f[len('photos/'):]
+    if os.path.exists(t): continue
+    os.makedirs(os.path.dirname(t), exist_ok=True)
+    im = Image.open(f); im.thumbnail((900, 900), Image.LANCZOS)
+    im.save(t, 'JPEG', quality=78, optimize=True, progressive=True)
+
+# Extraits d'ouverture : 20 s, 960 px, sans son, image d'apercu = premiere image (transition sans saut)
+os.makedirs('video/hero', exist_ok=True)
+for f in glob.glob('video/*.mp4'):
+    out = 'video/hero/' + os.path.basename(f)
+    if os.path.exists(out): continue
+    d = duration(f)
+    if d < 8: continue
+    st = d * 0.18; ln = min(20.0, d - st - 0.5)
+    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-ss', f'{st:.1f}', '-i', f, '-t', f'{ln:.1f}', '-an',
+        '-vf', 'scale=960:-2:flags=lanczos,format=yuv420p', '-c:v', 'libx264', '-preset', 'slow', '-crf', '30',
+        '-g', '48', '-movflags', '+faststart', out], check=True)
+    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', out, '-frames:v', '1', '-q:v', '4', out[:-4] + '.jpg'], check=True)
+
 media = {'photos': {}, 'videos': []}
 for f in sorted(glob.glob('photos/*/*.jpg')):
     w, h = Image.open(f).size
     media['photos'].setdefault(f.split('/')[1], []).append([f, w, h])
 for f in sorted(glob.glob('video/*.mp4')):
     media['videos'].append([f, f[:-4] + '.jpg'])
+media['hero'] = [[f, f[:-4] + '.jpg'] for f in sorted(glob.glob('video/hero/*.mp4'))]
 json.dump(media, open('media.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 os.makedirs('jobs', exist_ok=True)
 open('jobs/journal.txt', 'w').write('\n'.join(log) + '\n')
