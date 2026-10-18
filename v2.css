@@ -32,3 +32,7 @@ body.lay-b .cats .img{aspect-ratio:4/3}
 .strip .track{will-change:transform;backface-visibility:hidden}
 .strip img{backface-visibility:hidden}
 .hero video{will-change:opacity}
+.strip-item{flex:none;display:block;cursor:pointer;overflow:hidden}
+.strip-item img{transition:opacity .4s,transform 1.2s var(--ease)}
+.strip-item:hover img{opacity:.85;transform:scale(1.03)}
+figure.flash .box{outline:1px solid var(--ink);outline-offset:6px;transition:outline-color 1.6s}
