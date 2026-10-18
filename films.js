@@ -1,5 +1,6 @@
 /* Pages Films et Pro (photo + vidéo), alimentées par media.json et films.json */
 (function(){
+var bj=document.createElement('script');bj.src='blog.js';document.body.appendChild(bj);
 var dd=document.querySelector('#dd ul');if(!dd)return;
 var cul=dd.querySelector('a[href="#/culinaire"]');
 cul.parentNode.insertAdjacentHTML('beforebegin','<li><a href="#/pro">Pro</a></li>');
