@@ -10,6 +10,14 @@ POSTS.sort(key=lambda a: a.get('publish', ''), reverse=True)
 D['articles'] = POSTS + D['articles']
 D['articles'] = [a for a in D['articles'] if a.get('publish', '0000-00-00') <= TODAY]
 B, BR = D['base'], D['brand']
+# Dimensions des photos (analyse de l'orientation pour la mise en page)
+DIMS = {}
+try:
+    for _items in json.load(open('media.json', encoding='utf-8')).get('photos', {}).values():
+        for _f, _w, _h in _items:
+            DIMS[_f[len('photos/'):-4]] = (_w, _h)
+except Exception:
+    pass
 E = lambda s: html.escape(s, quote=True)
 MONO = '<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="mono" viewBox="0 0 30 34"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M0.8 0V34M4.4 0V34M0 33.2H21.5M4.4 0.8H19A9.35 9.35 0 0 1 19 19.5H4.4"/></symbol></svg>'
 LOGO = '<svg viewBox="0 0 30 34" aria-hidden="true"><use href="#mono"/></svg><span class="word"><b>LMOH</b>PHOTOGRAPHY</span>'
@@ -56,7 +64,17 @@ def footer(lang, R):
 SCRIPT = ("<script>(function(){var b=document.getElementById('burger'),n=document.getElementById('nav');"
           "b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});"
           "var h=document.getElementById('hdr');window.addEventListener('scroll',function(){h.classList.toggle('compact',scrollY>40)},{passive:true});"
-          "})();</script>")
+          "})();</script>") + r"""<script>(function(){
+var lb=document.createElement('div');lb.className='jlb';lb.innerHTML='<button type="button" class="jx" aria-label="Fermer">&times;</button><div class="jlb-in"></div>';document.body.appendChild(lb);
+var inn=lb.querySelector('.jlb-in');
+function close(){lb.classList.remove('open');setTimeout(function(){inn.innerHTML=''},400)}
+lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('jx'))close()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+document.querySelectorAll('.jfig img').forEach(function(i){i.addEventListener('click',function(){inn.innerHTML='<img src="'+i.getAttribute('src')+'" alt="">';lb.classList.add('open')})});
+document.querySelectorAll('.jfilm').forEach(function(f){f.addEventListener('click',function(){inn.innerHTML='<video controls autoplay playsinline src="'+f.getAttribute('data-src')+'"></video>';lb.classList.add('open')})});
+if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.jfig,.jfilm').forEach(function(el){el.classList.add('rv2');io.observe(el)})}
+})();</script>"""
 
 def page(lang, R, title, desc, path, alt_path, body, ld, ogimg, ogtype='website'):
     fr_url, en_url = (B + path, B + alt_path) if lang == 'fr' else (B + alt_path, B + path)
@@ -83,11 +101,11 @@ def write(p, s):
     os.makedirs(os.path.dirname(p) or '.', exist_ok=True)
     open(p, 'w', encoding='utf-8').write(s)
 
-L = {'fr': {'faq': 'Questions fréquentes', 'related': 'À lire aussi', 'contact': 'Parlons de votre projet', 'home': 'Accueil',
+L = {'fr': {'film': 'Regarder le film, avec le son', 'faq': 'Questions fréquentes', 'related': 'À lire aussi', 'contact': 'Parlons de votre projet', 'home': 'Accueil',
             'journal': 'Journal', 'read': 'Lire l’article', 'jt': 'Journal : conseils de photographe et vidéaste à Lyon | LMOH',
             'jd': 'Conseils et retours d’expérience d’un photographe et vidéaste professionnel à Lyon : mariage, événements, entreprise, shooting produit.',
             'jh': 'Journal', 'jl': 'Conseils, coulisses et retours d’expérience pour préparer votre mariage, votre événement ou votre shooting.'},
-     'en': {'faq': 'Frequently asked questions', 'related': 'Read next', 'contact': 'Let’s talk about your project', 'home': 'Home',
+     'en': {'film': 'Watch the film, sound on', 'faq': 'Frequently asked questions', 'related': 'Read next', 'contact': 'Let’s talk about your project', 'home': 'Home',
             'journal': 'Journal', 'read': 'Read the article', 'jt': 'Journal: advice from a wedding and event photographer in Lyon, France | LMOH',
             'jd': 'Advice from a professional photographer and videographer in Lyon, France: weddings in France, events, corporate and product photography.',
             'jh': 'Journal', 'jl': 'Advice and behind-the-scenes stories to help you plan your wedding, event or shoot in France.'}}
@@ -108,15 +126,26 @@ for a in D['articles']:
         path, alt = jpath(lang, x['slug']), jpath('en' if lang == 'fr' else 'fr', other['slug'])
         R = '../../' if lang == 'fr' else '../../../'
         contact = R + ('#/contact' if lang == 'fr' else 'en/#contact')
-        secs = ''
+        secs, side = '', 0
         for s in x['sections']:
-            secs += f'<h2>{E(s["h2"])}</h2>' + ''.join(f'<p>{E(p)}</p>' for p in s['p'])
+            head = f'<h2>{E(s["h2"])}</h2>'
+            paras = ''.join(f'<p>{E(p)}</p>' for p in s['p'])
             if s.get('img'):
-                secs += f'<figure class="jfig">{img(R, s["img"], s.get("img_alt", ""))}</figure>'
+                w, h = DIMS.get(s['img'], (3, 2))
+                fig = img(R, s['img'], s.get('img_alt', ''))
+                if h > w * 1.1:
+                    side ^= 1
+                    secs += f'<section class="jsec">{head}<figure class="jfig tall {"right" if side else "left"}">{fig}</figure>{paras}</section>'
+                else:
+                    secs += f'<section class="jsec">{head}{paras}<figure class="jfig wide">{fig}</figure></section>'
             elif s.get('video'):
                 v = s['video']
-                secs += (f'<figure class="jfig"><video controls playsinline preload="none" poster="{R}video/{v}.jpg" '
-                         f'src="{R}video/{v}.mp4"></video></figure>')
+                secs += (f'<section class="jsec">{head}{paras}<figure class="jfilm" data-src="{R}video/{v}.mp4">'
+                         f'<img src="{R}video/{v}.jpg" alt="{E(s["h2"])}" loading="lazy" decoding="async">'
+                         f'<button type="button" class="jplay" aria-label="{t["film"]}"><span></span></button>'
+                         f'<figcaption>{t["film"]}</figcaption></figure></section>')
+            else:
+                secs += f'<section class="jsec">{head}{paras}</section>'
         faq = ''.join(f'<details><summary>{E(q["q"])}</summary><p>{E(q["a"])}</p></details>' for q in x['faq'])
         ra, rl = bySlug.get(x.get('related'), (None, None))
         if not ra or ra is a:
