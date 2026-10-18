@@ -14,7 +14,7 @@ var sec=document.createElement('section');sec.className='wrap sel';sec.id='selec
 var h='<div class="title"><span class="kicker">La sélection</span><h2>Mes plus belles images</h2></div><div class="sel-tabs" role="tablist">';
 THEMES.forEach(function(t,i){h+='<button role="tab" aria-selected="false" data-i="'+i+'">'+t.name+'<i><b></b></i></button>'});
 h+='</div><div class="sel-stage">';
-THEMES.forEach(function(t,i){h+='<div class="sel-set" data-i="'+i+'">';t.img.forEach(function(s,k){h+='<a href="'+t.href+'" aria-label="'+t.name+'"><img data-src="photos/'+s+'.jpg" alt="'+t.name+'" decoding="async"></a>'});h+='</div>'});
+THEMES.forEach(function(t,i){h+='<div class="sel-set" data-i="'+i+'">';t.img.forEach(function(s,k){var full='photos/'+s+'.jpg';h+='<a href="'+t.href+'" aria-label="'+t.name+'"><img data-src="'+(k?'thumbs/'+s+'.jpg':full)+'" data-full="'+full+'" onerror="this.onerror=null;this.src=this.dataset.full" alt="'+t.name+'" decoding="async"></a>'});h+='</div>'});
 h+='</div><div class="sel-cap"><p></p><a href="#/mariage">Voir la galerie</a></div>';
 sec.innerHTML=h;intro.parentNode.insertBefore(sec,intro.nextSibling);
 sec.style.setProperty('--dur',DUR/1000+'s');
