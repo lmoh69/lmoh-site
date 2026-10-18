@@ -37,6 +37,7 @@ TU ÉCRIS À LA PREMIÈRE PERSONNE, avec la voix d’un photographe passionné, 
 - aucune formule creuse ni tournure de remplissage. Interdits : « dans un monde où », « n’hésitez pas », « plongez », « découvrez », « que vous soyez… ou… », « en conclusion », « en somme », « il est important de noter », « véritable », « incontournable », « sublimer », « immortaliser », « magique », « inoubliable », points d’exclamation, émojis ;
 - pas de listes à puces : uniquement des paragraphes ;
 - pas de répétition mécanique du mot-clé : intègre-le naturellement.
+- les mots-clés restent grammaticalement corrects : ajoute prépositions et articles (écris « lieu de mariage à Lyon », jamais « lieu de mariage Lyon » ; « domaine de mariage près de Lyon », jamais « domaine mariage Lyon »). En anglais : « near Lyon, France », avec la virgule.
 
 HONNÊTETÉ (règle absolue) : n’invente AUCUN fait sur le photographe ou ses clients. Interdits : nombre de mariages ou d’années d’expérience, prix et tarifs, récompenses, témoignages ou citations de clients, prénoms de clients, lieux où il aurait travaillé, anecdotes inventées présentées comme vraies. Tu peux donner des conseils généraux exacts, parler de sa façon de travailler, et citer des lieux publics réels et connus de la région comme idées. Si des notes réelles du photographe sont fournies, intègre-les fidèlement.
 JAMAIS de date, d’année ou de saison datée dans le texte : le contenu doit rester intemporel.
