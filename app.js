@@ -60,11 +60,16 @@ function buildStrip(){
  track.innerHTML='';
  seq.concat(seq).forEach(function(it,n){
   if(it.label){var d=document.createElement('div');d.className='strip-label';d.innerHTML='<span>'+it.label+'</span>';track.appendChild(d)}
-  else{var i=document.createElement('img');i.dataset.full=it.src;i.onerror=function(){this.onerror=null;this.src=this.dataset.full};if(n>5)i.loading='lazy';i.decoding='async';i.alt='';i.src=T(it.src);track.appendChild(i)}
+  else{var a=document.createElement('a');a.className='strip-item';a.href='#'+(PAGE_OF[it.src.split('/')[1]]||'/mariage');a.dataset.photo=it.src;a.setAttribute('aria-label','Voir la galerie');
+   var i=document.createElement('img');i.dataset.full=it.src;i.onerror=function(){this.onerror=null;this.src=this.dataset.full};if(n>5)i.loading='lazy';i.decoding='async';i.alt='';i.src=T(it.src);a.appendChild(i);track.appendChild(a)}
  });
- track.style.animationDuration=(seq.length*5)+'s';
+ track.style.animationDuration=(seq.length*3.2)+'s';
 }
+var PAGE_OF={mariage:'/mariage',mariage2:'/mariage',details:'/mariage',soiree:'/mariage',couple:'/couple',nb:'/noir-et-blanc',portrait:'/portrait',grossesse:'/naissance',culinaire:'/culinaire',pro:'/pro'};
 buildStrip();
+/* Clic sur une photo du bandeau : ouverture de la galerie, centrée sur cette photo */
+track.addEventListener('click',function(e){var a=e.target.closest('.strip-item');if(!a)return;var ph=a.dataset.photo;
+ setTimeout(function(){var im=document.querySelector('.page.show img[data-full="'+ph+'"]');if(im){var f=im.closest('figure')||im;f.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});f.classList.add('flash');setTimeout(function(){f.classList.remove('flash')},1800)}},450)});
 
 /* --- Hero : diaporama, remplacé par le teaser du mois --- */
 var hero=document.getElementById('hero'),slides=[].slice.call(document.querySelectorAll('#slides .slide')),si=0,timer=null;
