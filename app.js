@@ -28,6 +28,12 @@ var mcta=document.querySelector('[data-page="/mariage"] .cta-band');
 mcta.insertAdjacentHTML('beforebegin','<section class="chap" id="c6"><div class="chap-head rv"><span class="num">Et aussi</span><h2>Un mariage au bord du lac</h2><p>Une autre histoire, entre mairie, palace et balade en bateau.</p></div><div class="grid" id="lac"></div></section><section class="chap" id="c7" hidden><div class="chap-head rv"><span class="num">Nouveau</span><h2>Derniers mariages</h2><p>Les images les plus récentes, ajoutées ce mois-ci.</p></div><div class="grid" id="newMariage"></div></section>');
 var cn=document.querySelector('.chap-nav');if(cn)cn.insertAdjacentHTML('beforeend','<a href="#/mariage" data-to="c6">Au bord du lac</a>');
 
+/* Miniatures légères (900 px) pour l'affichage, photo HD pour le plein écran */
+function T(s){return s.replace(/^photos\//,'thumbs/')}
+var FB=' onerror="this.onerror=null;this.src=this.dataset.full"';
+function thumbify(img){var s=img.getAttribute('src');if(!s||!/^photos\//.test(s)||img.dataset.full)return;img.dataset.full=s;img.onerror=function(){img.onerror=null;img.src=img.dataset.full};img.setAttribute('src',T(s))}
+document.querySelectorAll('main .grid img, .cats img, .posts img, .article .cover img, .about img').forEach(thumbify);
+
 var pages=[].slice.call(document.querySelectorAll('.page'));
 var links=[].slice.call(document.querySelectorAll('nav.main a'));
 var hdr=document.getElementById('hdr'),nav=document.getElementById('nav'),burger=document.getElementById('burger'),dd=document.getElementById('dd'),ddBtn=document.getElementById('ddBtn');
@@ -35,7 +41,7 @@ var folio=['/mariage','/couple','/noir-et-blanc','/portrait','/naissance','/pro'
 var current=null;
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -6% 0px',threshold:.05});
 function watch(p){p.querySelectorAll('.rv,.rvi').forEach(function(el){if(reduce){el.classList.add('in')}else if(!el.classList.contains('in')){io.observe(el)}})}
-function fig(src,w,h,alt){var f=document.createElement('figure');f.className='rv';f.innerHTML='<div class="box rvi"><img src="'+src+'" width="'+w+'" height="'+h+'" alt="'+(alt||'Photo LMOH Photography')+'" loading="lazy" decoding="async"></div>';return f}
+function fig(src,w,h,alt){var f=document.createElement('figure');f.className='rv';f.innerHTML='<div class="box rvi"><img src="'+T(src)+'" data-full="'+src+'"'+FB+' width="'+w+'" height="'+h+'" alt="'+(alt||'Photo LMOH Photography')+'" loading="lazy" decoding="async"></div>';return f}
 
 /* --- Bandeau qui défile --- */
 var track=document.getElementById('track');
@@ -54,7 +60,7 @@ function buildStrip(){
  track.innerHTML='';
  seq.concat(seq).forEach(function(it,n){
   if(it.label){var d=document.createElement('div');d.className='strip-label';d.innerHTML='<span>'+it.label+'</span>';track.appendChild(d)}
-  else{var i=document.createElement('img');i.src=it.src;i.alt='';if(n>12)i.loading='lazy';i.decoding='async';track.appendChild(i)}
+  else{var i=document.createElement('img');i.dataset.full=it.src;i.onerror=function(){this.onerror=null;this.src=this.dataset.full};if(n>5)i.loading='lazy';i.decoding='async';i.alt='';i.src=T(it.src);track.appendChild(i)}
  });
  track.style.animationDuration=(seq.length*5)+'s';
 }
@@ -67,8 +73,8 @@ slides[0].classList.add('on');prep(1);
 if(!reduce)timer=setInterval(function(){slides[si].classList.remove('on');si=(si+1)%slides.length;prep(si);slides[si].classList.add('on');prep((si+1)%slides.length)},6500);
 function heroVideo(src,poster){
  var c=navigator.connection||{};if(reduce||c.saveData||/2g/.test(c.effectiveType||''))return;
- var v=document.createElement('video');v.muted=true;v.loop=true;v.autoplay=true;v.playsInline=true;v.setAttribute('playsinline','');v.setAttribute('muted','');v.preload='auto';v.poster=poster;v.src=src;v.style.opacity='0';v.style.transition='opacity 1.6s ease';
- v.addEventListener('playing',function(){v.style.opacity='1';if(timer){clearInterval(timer);timer=null}var s=document.getElementById('sound');s.style.display='block'},{once:true});
+ var v=document.createElement('video');v.muted=true;v.loop=true;v.autoplay=true;v.playsInline=true;v.setAttribute('playsinline','');v.setAttribute('muted','');v.preload='auto';v.poster=poster;v.src=src;v.style.opacity='0';v.style.transition='opacity 1.2s ease';
+ v.addEventListener('playing',function(){v.style.opacity='1';if(timer){clearInterval(timer);timer=null}setTimeout(function(){var sl=document.getElementById('slides');if(sl)sl.remove()},1400);var s=document.getElementById('sound');s.style.display='block'},{once:true});
  hero.insertBefore(v,hero.querySelector('.center'));
  var p=v.play();if(p&&p.catch)p.catch(function(){});
  var s=document.getElementById('sound');s.onclick=function(){v.muted=!v.muted;s.textContent=v.muted?'Activer le son':'Couper le son'};
@@ -97,7 +103,7 @@ function fillFilms(videos){
 }
 
 /* --- Galeries : ordre renouvelé chaque mois + nouvelles photos du Drive --- */
-function present(){var s={};document.querySelectorAll('.page img').forEach(function(i){var a=i.getAttribute('src')||i.dataset.src;if(a)s[a]=1});return s}
+function present(){var s={};document.querySelectorAll('.page img').forEach(function(i){var a=i.dataset.full||i.getAttribute('src')||i.dataset.src;if(a)s[a]=1});return s}
 function refreshGrid(grid,items,salt){
  var have=present();
  (items||[]).forEach(function(it){if(!have[it[0]])grid.appendChild(fig(it[0],it[1],it[2]))});
@@ -118,9 +124,9 @@ function applyMedia(m){
  (P.soiree||[]).forEach(function(it){if(!have[it[0]]&&c5.children.length<9)c5.appendChild(fig(it[0],it[1],it[2],'Soirée de mariage'))});
  /* Couvertures de l'accueil et bandeau du mois */
  var covers={'/mariage':P.mariage,'/couple':P.couple,'/noir-et-blanc':P.nb,'/portrait':P.portrait};
- document.querySelectorAll('.cats a').forEach(function(a,k){var pool=(covers[a.getAttribute('href').slice(1)]||[]).filter(function(it){return it[2]>=it[1]*1.2||k===0});if(pool.length){var pick=shuffle(pool,21+k)[0];a.querySelector('img').src=pick[0]}});
+ document.querySelectorAll('.cats a').forEach(function(a,k){var pool=(covers[a.getAttribute('href').slice(1)]||[]).filter(function(it){return it[2]>=it[1]*1.2||k===0});if(pool.length){var pick=shuffle(pool,21+k)[0],im=a.querySelector('img');im.dataset.full=pick[0];im.src=T(pick[0])}});
  var vids=m.videos||[];fillFilms(vids);
- var heroes=vids.filter(function(v){return !isPro(v)&&CFG.heroExclude.indexOf(v[0].split('/').pop().replace('.mp4',''))<0});
+ var heroes=(m.hero&&m.hero.length?m.hero:vids).filter(function(v){return !isPro(v)&&CFG.heroExclude.indexOf(v[0].split('/').pop().replace('.mp4',''))<0});
  if(heroes.length){var h=heroes[SEED%heroes.length];heroVideo(h[0],h[1])}
  if(current)watch(document.querySelector('.page.show'));
 }
@@ -150,7 +156,7 @@ document.addEventListener('click',function(e){if(!dd.contains(e.target)){dd.clas
 
 /* --- Visionneuse photo --- */
 var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),list=[],idx=0;
-function show(i){idx=(i+list.length)%list.length;lbImg.src=list[idx].src;lbImg.alt=list[idx].alt}
+function show(i){idx=(i+list.length)%list.length;lbImg.src=list[idx].dataset.full||list[idx].src;lbImg.alt=list[idx].alt}
 document.addEventListener('click',function(e){var f=e.target.closest('.grid figure');if(!f)return;var im=f.querySelector('img');if(!im)return;list=[].slice.call(f.closest('.page').querySelectorAll('.grid img'));show(list.indexOf(im));lb.classList.add('open')});
 function close(){lb.classList.remove('open')}
 document.getElementById('lbX').addEventListener('click',close);
