@@ -14,6 +14,7 @@ var CFG={
 };
 document.head.insertAdjacentHTML('beforeend','<link rel="stylesheet" href="v2.css">');
 document.body.classList.add('lay-'+['a','b','c'][SEED%3]);
+var tag=document.querySelector('.hero .tag');if(tag)tag.textContent='Photographe & vidéaste professionnel';
 var sj=document.createElement('script');sj.src='selection.js';document.body.appendChild(sj);
 var fj=document.createElement('script');fj.src='films.js';document.body.appendChild(fj);
 
@@ -152,7 +153,7 @@ function route(){
  ddBtn.classList.toggle('on',folio.indexOf(current)>-1);
  nav.classList.remove('open');burger.setAttribute('aria-expanded','false');dd.classList.remove('open');ddBtn.setAttribute('aria-expanded','false');
  window.scrollTo(0,0);onScroll();
- var h1=hit.querySelector('h1');document.title=(h1&&current!=='/'?h1.textContent+' | ':'')+'LMOH Photography, photographe de mariage à Lyon';
+ var h1=hit.querySelector('h1');document.title=(h1&&current!=='/'?h1.textContent+' | ':'')+'LMOH Photography, photographe & vidéaste professionnel';
 }
 window.addEventListener('hashchange',route);route();
 burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
