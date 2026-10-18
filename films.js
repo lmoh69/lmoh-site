@@ -20,7 +20,7 @@ function card(v,lbl){
  b.onclick=function(){var vm=document.querySelector('.vm');if(!vm)return;var x=vm.querySelector('video');x.src=v[0];x.poster=v[1];vm.classList.add('open');x.muted=false;var p=x.play();if(p&&p.catch)p.catch(function(){})};
  return b;
 }
-function fig(it){var f=document.createElement('figure');f.className='rv';f.innerHTML='<div class="box rvi"><img src="'+it[0]+'" width="'+it[1]+'" height="'+it[2]+'" alt="Photo professionnelle LMOH Photography" loading="lazy" decoding="async"></div>';return f}
+function fig(it){var f=document.createElement('figure');f.className='rv';f.innerHTML='<div class="box rvi"><img src="'+it[0].replace(/^photos\//,'thumbs/')+'" data-full="'+it[0]+'" onerror="this.onerror=null;this.src=this.dataset.full" width="'+it[1]+'" height="'+it[2]+'" alt="Photo professionnelle LMOH Photography" loading="lazy" decoding="async"></div>';return f}
 function nice(s){return s.replace(/^(film|pro|teaser)-/,'').replace(/-/g,' ').replace(/^./,function(c){return c.toUpperCase()})}
 Promise.all([
  fetch('media.json',{cache:'no-cache'}).then(function(r){return r.json()}),
