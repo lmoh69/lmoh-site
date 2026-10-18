@@ -2,6 +2,10 @@
 Contenu : journal/articles.json. Lance par le robot GitHub a chaque modification."""
 import json, os, html
 D = json.load(open('journal/articles.json', encoding='utf-8'))
+import datetime
+TODAY = datetime.date.today().isoformat()
+# Publication programmee : un article n'apparait qu'a partir de sa date "publish" (invisible sur le site)
+D['articles'] = [a for a in D['articles'] if a.get('publish', '0000-00-00') <= TODAY]
 B, BR = D['base'], D['brand']
 E = lambda s: html.escape(s, quote=True)
 MONO = '<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="mono" viewBox="0 0 30 34"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M0.8 0V34M4.4 0V34M0 33.2H21.5M4.4 0.8H19A9.35 9.35 0 0 1 19 19.5H4.4"/></symbol></svg>'
@@ -121,7 +125,7 @@ for a in D['articles']:
         ld = {"@context": "https://schema.org", "@graph": [
             {"@type": "BlogPosting", "headline": x['h1'], "description": x['description'], "inLanguage": lang,
              "image": f'{B}/photos/{x["cover"]}.jpg', "mainEntityOfPage": B + path,
-             "datePublished": D['updated'], "dateModified": D['updated'],
+             "datePublished": a.get('publish', D['updated']), "dateModified": a.get('publish', D['updated']),
              "author": {"@type": "Person", "name": "Lmoh", "url": B + "/"}, "publisher": {"@id": B + "/#business"}},
             {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q['q'], "acceptedAnswer": {"@type": "Answer", "text": q['a']}} for q in x['faq']]},
             {"@type": "BreadcrumbList", "itemListElement": [
