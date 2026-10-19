@@ -21,6 +21,22 @@ def poster(mp4):
 folders = json.load(open('tools/folders.json'))
 os.makedirs('tmp', exist_ok=True)
 log = []
+# Anti-doublons : fichiers Drive deja importes + empreinte visuelle des photos deja en ligne
+REG, HCACHE, MAXV = 'tools/imported.json', 'tools/hashes.json', 700 * 1024 * 1024
+reg = set(json.load(open(REG))) if os.path.exists(REG) else set()
+hashes = json.load(open(HCACHE)) if os.path.exists(HCACHE) else {}
+def dhash(im):
+    g = im.convert('L').resize((9, 8), Image.LANCZOS); px = list(g.getdata())
+    return sum(1 << i for i in range(64) if px[(i // 8) * 9 + i % 8] > px[(i // 8) * 9 + i % 8 + 1])
+_ready = []
+def known_hashes():
+    if not _ready:
+        for f in glob.glob('thumbs/*/*.jpg'):
+            if f not in hashes:
+                try: hashes[f] = dhash(Image.open(f))
+                except Exception: pass
+        _ready.append(1)
+    return hashes.values()
 for jf in sorted(glob.glob('jobs/*.json')):
     try:
         job = json.load(open(jf))
@@ -34,7 +50,11 @@ for jf in sorted(glob.glob('jobs/*.json')):
             if not cat:
                 log.append(f"SKIP dossier inconnu {it.get('name')}"); continue
             name = it.get('slug') or slug(it.get('name', it['id']))
+            if it.get('id') in reg:
+                continue
             if it.get('kind') == 'video' or mime.startswith('video/'):
+                if int(it.get('size') or 0) > MAXV:
+                    log.append(f"SKIP video trop lourde {it.get('name')}"); continue
                 os.makedirs('video', exist_ok=True)
                 out = f'video/{name}.mp4'
                 if os.path.exists(out): continue
@@ -47,20 +67,29 @@ for jf in sorted(glob.glob('jobs/*.json')):
                 subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', out, '-vf',
                     'fps=1/3,scale=320:-2,tile=5x4', '-frames:v', '1', f'video/{name}-planche.jpg'], check=True)
                 os.remove(src)
+                reg.add(it['id'])
                 log.append(f'ok {out}')
             else:
                 out = f'photos/{cat}/{name}.jpg'
                 if os.path.exists(out): continue
                 src = gdown.download(id=it['id'], output='tmp/p', quiet=True)
                 im = ImageOps.exif_transpose(Image.open(src)).convert('RGB')
+                h = dhash(im)
+                if any(bin(h ^ v).count('1') <= 5 for v in known_hashes()):
+                    os.remove(src); reg.add(it['id'])
+                    log.append(f"SKIP deja sur le site {it.get('name')}"); continue
                 im.thumbnail((2000, 2000), Image.LANCZOS)
                 os.makedirs(f'photos/{cat}', exist_ok=True)
                 im.save(out, 'JPEG', quality=82, optimize=True, progressive=True)
                 os.remove(src)
+                hashes['thumbs/' + out[len('photos/'):]] = h
+                reg.add(it['id'])
                 log.append(f'ok {out}')
         except Exception as e:
             log.append(f"ERR {it.get('name', it.get('id'))} {e}")
     os.remove(jf)
+json.dump(sorted(reg), open(REG, 'w'))
+json.dump(hashes, open(HCACHE, 'w'))
 
 if not os.path.exists('video/.posters-v2'):
     for f in glob.glob('video/*.mp4'):
@@ -85,11 +114,15 @@ for f in glob.glob('video/*.mp4'):
     d = duration(f)
     if d < 8: continue
     st = d * 0.18; ln = min(20.0, d - st - 0.5)
-    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-ss', f'{st:.1f}', '-i', f, '-t', f'{ln:.1f}',
-        '-vf', 'scale=960:-2:flags=lanczos,format=yuv420p', '-c:v', 'libx264', '-preset', 'slow', '-crf', '30',
-        '-g', '48', '-af', f'afade=t=in:d=0.8,afade=t=out:st={max(0.0, ln - 1.5):.1f}:d=1.5',
-        '-c:a', 'aac', '-b:a', '96k', '-movflags', '+faststart', out], check=True)
-    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', out, '-frames:v', '1', '-q:v', '4', out[:-4] + '.jpg'], check=True)
+    try:
+        subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-ss', f'{st:.1f}', '-i', f, '-t', f'{ln:.1f}',
+            '-vf', 'scale=960:-2:flags=lanczos,format=yuv420p', '-c:v', 'libx264', '-preset', 'slow', '-crf', '30',
+            '-g', '48', '-af', f'afade=t=in:d=0.8,afade=t=out:st={max(0.0, ln - 1.5):.1f}:d=1.5',
+            '-c:a', 'aac', '-b:a', '96k', '-movflags', '+faststart', out], check=True)
+        subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', out, '-frames:v', '1', '-q:v', '4', out[:-4] + '.jpg'], check=True)
+    except Exception as e:
+        log.append(f'ERR extrait {f} {e}')
+        if os.path.exists(out): os.remove(out)
 
 media = {'photos': {}, 'videos': []}
 for f in sorted(glob.glob('photos/*/*.jpg')):
