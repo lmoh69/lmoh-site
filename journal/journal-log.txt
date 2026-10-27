@@ -4,3 +4,5 @@ publie : trouver-lieu-de-mariage-lyon-domaine-chateau
 publie : premier-regard-mariage-first-look
 2026-10-23
 publie : videaste-mariage-lyon-teaser-ou-film-long
+2026-10-27
+publie : photographe-mariage-oriental-lyon
