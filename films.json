@@ -24,11 +24,56 @@
     "pro-hammam": "Hammam",
     "pro-sensoriel": "Sensoriel",
     "pro-1mn": "Cosmétique",
-    "pro-3": "Portrait mode"
+    "pro-3": "Portrait mode",
+    "teaser-adeline-stevie": "Avant le oui"
   },
-  "proFilms": ["teaser-black"],
+  "proFilms": [
+    "teaser-black"
+  ],
   "hide": [],
-  "heroExclude": ["film-lady", "film-filtre-nb", "film-lg", "film-mdm-4", "film-mdm-3"],
-  "order": ["teaser-camille", "film-antibes", "teaser-court", "film-ja", "film-lac", "film-first-dance", "film-noir-blanc", "film-sn", "teaser-1mn", "film-web", "film-court", "film-cs", "film-y", "film-lg", "film-mdm-3", "film-mdm-4", "film-filtre-nb", "teaser-reseau", "film-lady", "pro-robe-bleue", "pro-1mn", "pro-3", "pro-hammam", "pro-sensoriel", "teaser-black"],
-  "proPhotos": ["portrait/p1084061", "portrait/p1329201", "portrait/p1005204", "culinaire/p1114665", "details/p1005105", "portrait/p1006272", "culinaire/p1114669", "details/p1048523"]
+  "heroExclude": [
+    "film-lady",
+    "film-filtre-nb",
+    "film-lg",
+    "film-mdm-4",
+    "film-mdm-3"
+  ],
+  "order": [
+    "teaser-camille",
+    "film-antibes",
+    "teaser-court",
+    "teaser-adeline-stevie",
+    "film-ja",
+    "film-lac",
+    "film-first-dance",
+    "film-noir-blanc",
+    "film-sn",
+    "teaser-1mn",
+    "film-web",
+    "film-court",
+    "film-cs",
+    "film-y",
+    "film-lg",
+    "film-mdm-3",
+    "film-mdm-4",
+    "film-filtre-nb",
+    "teaser-reseau",
+    "film-lady",
+    "pro-robe-bleue",
+    "pro-1mn",
+    "pro-3",
+    "pro-hammam",
+    "pro-sensoriel",
+    "teaser-black"
+  ],
+  "proPhotos": [
+    "portrait/p1084061",
+    "portrait/p1329201",
+    "portrait/p1005204",
+    "culinaire/p1114665",
+    "details/p1005105",
+    "portrait/p1006272",
+    "culinaire/p1114669",
+    "details/p1048523"
+  ]
 }
