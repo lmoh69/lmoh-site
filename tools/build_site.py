@@ -102,7 +102,7 @@ def write(p, s):
     open(p, 'w', encoding='utf-8').write(s)
 
 L = {'fr': {'film': 'Regarder le film, avec le son', 'faq': 'Questions fréquentes', 'related': 'À lire aussi', 'contact': 'Parlons de votre projet', 'home': 'Accueil',
-            'journal': 'Journal', 'read': 'Lire l’article', 'jt': 'Journal : conseils de photographe et vidéaste à Lyon | LMOH',
+            'journal': 'Journal', 'read': 'Lire l’article', 'jt': 'Journal : conseils de photographe vidéaste à Lyon | LMOH',
             'jd': 'Conseils et retours d’expérience d’un photographe et vidéaste professionnel à Lyon : mariage, événements, entreprise, shooting produit.',
             'jh': 'Journal', 'jl': 'Conseils, coulisses et retours d’expérience pour préparer votre mariage, votre événement ou votre shooting.'},
      'en': {'film': 'Watch the film, sound on', 'faq': 'Frequently asked questions', 'related': 'Read next', 'contact': 'Let’s talk about your project', 'home': 'Home',
