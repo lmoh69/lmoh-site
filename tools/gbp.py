@@ -37,5 +37,8 @@ for i in range(max(len(v) for v in pool.values())):
     for c, (texte, page) in TEXTES.items():
         if i < len(pool[c]):
             rot.append({'photo': RAW + 'photos/' + pool[c][i] + '.jpg', 'cat': c, 'texte': texte, 'url': B + '/' + page})
-json.dump({'photos': rot}, open('gbp/photos.json', 'w', encoding='utf-8'), ensure_ascii=False)
+posts = [{'languageCode': 'fr', 'summary': r['texte'], 'topicType': 'STANDARD', 'callToAction': {'actionType': 'LEARN_MORE', 'url': r['url']},
+          'media': [{'mediaFormat': 'PHOTO', 'sourceUrl': r['photo']}]} for r in rot]
+medias = [{'mediaFormat': 'PHOTO', 'locationAssociation': {'category': 'ADDITIONAL'}, 'sourceUrl': r['photo']} for r in rot]
+json.dump({'photos': rot, 'posts': posts, 'medias': medias}, open('gbp/photos.json', 'w', encoding='utf-8'), ensure_ascii=False)
 print('fiche Google :', len(rot), 'photos en rotation')
