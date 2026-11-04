@@ -13,6 +13,10 @@ if posts:
     json.dump({'titre': a['h1'], 'texte': a['h1'] + '\n\n' + lead + '\n\nLa suite dans le Journal, sur le site.',
                'url': B + '/journal/' + a['slug'] + '/', 'photo': RAW + 'photos/' + a['cover'] + '.jpg', 'slug': a['slug']},
               open('gbp/article.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+    json.dump({'languageCode': 'fr', 'summary': a['h1'] + '\n\n' + lead + '\n\nLa suite dans le Journal, sur le site.', 'topicType': 'STANDARD',
+               'callToAction': {'actionType': 'LEARN_MORE', 'url': B + '/journal/' + a['slug'] + '/'},
+               'media': [{'mediaFormat': 'PHOTO', 'sourceUrl': RAW + 'photos/' + a['cover'] + '.jpg'}]},
+              open('gbp/article-post.json', 'w', encoding='utf-8'), ensure_ascii=False)
 
 TEXTES = {
     'mariage': ('Un regard, un geste, une lumière : je photographie et je filme les mariages à Lyon, en Rhône-Alpes et partout en France, avec discrétion et sans faire « poser ». Votre date est-elle encore libre ?', '#/mariage'),
