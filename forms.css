@@ -1,0 +1,41 @@
+/* Formulaires : offres, fiche mariage, confidentialité */
+.lf-offers{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+@media (max-width:900px){.lf-offers{grid-template-columns:1fr}}
+.lf-mosaic{display:grid;grid-template-columns:1.15fr 1fr;grid-template-rows:1fr 1fr;gap:12px}
+.lf-mosaic img{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1}
+.lf-mosaic .lf-tall{grid-row:span 2;aspect-ratio:3/4}
+.lf-col h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,4.6vw,3.4rem);line-height:1.1;margin:0 0 1.2rem}
+.lf-intro{max-width:34em;margin:0 0 1rem}
+.lf-fiche{max-width:780px}
+.lf-part{font-family:var(--serif);font-weight:400;font-size:1.5rem;margin:3rem 0 0;padding-top:1.4rem;border-top:1px solid var(--line)}
+.lf-form textarea{resize:vertical;min-height:4.5rem}
+.lf-set{border:0;padding:0;margin:1.6rem 0 0}
+.lf-set legend{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);padding:0;margin-bottom:.7rem}
+.lf-chips{display:flex;flex-wrap:wrap;gap:.5rem}
+form label.lf-chip{position:relative;display:inline-block;margin:0;font-size:inherit;letter-spacing:0;text-transform:none;color:var(--ink)}
+.lf-chip input{position:absolute;inset:0;opacity:0;width:100%;cursor:pointer;margin:0;padding:0;border:0}
+.lf-chip span{display:block;border:1px solid var(--line);padding:.5rem 1rem;border-radius:999px;font-size:.92rem;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.lf-chip input:checked+span{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.lf-chip input:focus-visible+span{outline:2px solid #3b6fd8;outline-offset:2px}
+form label.lf-consent{display:flex;gap:.7rem;align-items:flex-start;margin:1.4rem 0 0;font-size:.92rem;letter-spacing:0;text-transform:none;color:var(--ink);line-height:1.5}
+.lf-consent input{width:18px;height:18px;flex:none;margin-top:.2rem;accent-color:var(--ink);border:0;padding:0}
+.lf-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.lf-err{color:#b3261e;font-size:.9rem;min-height:1.3em;margin:1rem 0 0}
+.lf-legal{font-size:.82rem;color:var(--muted);margin:1.2rem 0 0;max-width:38em}
+.lf-legal a{color:inherit}
+.lf-done{display:none;border:1px solid var(--line);background:var(--soft);padding:2rem;margin-top:1rem}
+.lf-done h2{font-family:var(--serif);font-weight:400;font-size:1.8rem;margin:0 0 .5rem}
+.lf-done p{margin:0;color:var(--muted)}
+.lf-sent>form{display:none}.lf-sent>.lf-done{display:block}
+.lf-text{max-width:760px}
+.lf-text h2{font-family:var(--serif);font-weight:400;font-size:1.45rem;margin:2.2rem 0 .6rem}
+.lf-band{background:var(--soft);border-top:1px solid var(--line);padding:clamp(2.5rem,5vw,3.5rem) 0}
+.lf-band-in{display:grid;grid-template-columns:1fr 1.2fr;gap:2rem;align-items:center}
+@media (max-width:820px){.lf-band-in{grid-template-columns:1fr}}
+.lf-band h2{font-family:var(--serif);font-weight:400;font-size:1.7rem;margin:0 0 .3rem}
+.lf-band p{margin:0;color:var(--muted);font-size:.98rem}
+.lf-mini{display:grid;grid-template-columns:1fr auto;gap:.6rem 1rem;align-items:end}
+.lf-mini .btn{margin:0}
+.lf-mini .lf-legal,.lf-mini .lf-err{grid-column:1/-1;margin-top:.2rem}
+@media (max-width:520px){.lf-mini{grid-template-columns:1fr}}
+.lf-band .lf-done{margin:0}
