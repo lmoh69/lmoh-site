@@ -97,7 +97,7 @@ wa.href='https://wa.me/33651287900?text='+encodeURIComponent('Bonjour Lmoh, j’
 wa.setAttribute('aria-label','Une question ? Écrivez-moi sur WhatsApp');
 wa.innerHTML='<span class="lf-wa-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.2c-4.9 0-8.8 3.5-8.8 7.9 0 2.3 1.1 4.4 2.9 5.9l-.9 3.6 3.8-2.1c.9.3 1.9.4 3 .4 4.9 0 8.8-3.5 8.8-7.8S16.9 3.2 12 3.2z" fill="none" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/><circle cx="8.3" cy="11.1" r="1.1" fill="#fff"/><circle cx="12" cy="11.1" r="1.1" fill="#fff"/><circle cx="15.7" cy="11.1" r="1.1" fill="#fff"/></svg></span><span class="lf-wa-txt">Une question ?</span>';
 document.body.appendChild(wa);
-document.addEventListener('click',function(){var lb=document.getElementById('lb');wa.classList.toggle('lf-wa-off',!!(lb&&lb.classList.contains('open')))},true);
+var lbEl=document.getElementById('lb');if(lbEl&&'MutationObserver' in window){new MutationObserver(function(){wa.classList.toggle('lf-wa-off',lbEl.classList.contains('open'))}).observe(lbEl,{attributes:true,attributeFilter:['class']})}
 
 var r=location.hash.replace(/^#/,'');
 if(r==='/offres'||r==='/fiche-mariage'||r==='/confidentialite'){window.dispatchEvent(new HashChangeEvent('hashchange'))}
