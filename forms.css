@@ -39,3 +39,11 @@ form label.lf-consent{display:flex;gap:.7rem;align-items:flex-start;margin:1.4re
 .lf-mini .lf-legal,.lf-mini .lf-err{grid-column:1/-1;margin-top:.2rem}
 @media (max-width:520px){.lf-mini{grid-template-columns:1fr}}
 .lf-band .lf-done{margin:0}
+/* Bouton flottant WhatsApp */
+.lf-wa{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:60;display:flex;align-items:center;gap:.6rem;padding:.45rem 1.1rem .45rem .45rem;background:#fff;color:var(--ink);text-decoration:none;border-radius:999px;box-shadow:0 8px 24px rgba(26,25,24,.16),0 1px 3px rgba(26,25,24,.12);font-size:.9rem;font-weight:400;letter-spacing:.02em;transition:transform .3s var(--ease),opacity .3s}
+.lf-wa:hover{transform:translateY(-2px)}
+.lf-wa-ico{width:40px;height:40px;border-radius:50%;background:#25d366;display:grid;place-items:center;flex:none}
+.lf-wa-ico svg{width:24px;height:24px}
+.lf-wa-off{opacity:0;pointer-events:none}
+@media (max-width:600px){.lf-wa{padding:.4rem .9rem .4rem .4rem;font-size:.82rem}.lf-wa-ico{width:36px;height:36px}}
+@media (prefers-reduced-motion:reduce){.lf-wa{transition:none}}
