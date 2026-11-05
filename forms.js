@@ -91,6 +91,14 @@ wire('lfMini',function(f){return {type:'offres',prenom:'',email:val(f,'email'),c
 wire('lfFiche',function(f){return {type:'mariage',nom1:val(f,'nom1'),nom2:val(f,'nom2'),email:val(f,'email'),tel:val(f,'tel'),adresse:val(f,'adresse'),date:val(f,'date'),invites:val(f,'invites'),ceremonie:val(f,'ceremonie'),reception:val(f,'reception'),formule:checks(f,'formule'),contact_nom:val(f,'contact_nom'),contact_tel:val(f,'contact_tel'),deroule:val(f,'deroule'),groupes:val(f,'groupes'),envies:val(f,'envies'),instagram:val(f,'instagram'),source:val(f,'source'),image:f.elements.image.checked?'oui':'non',offres:f.elements.offres.checked?'oui':'non',site:val(f,'site')}},
  function(f){if(!val(f,'nom1')||!val(f,'nom2'))return 'Indiquez vos deux prénoms et noms.';if(!ok(val(f,'email')))return 'Indiquez une adresse e-mail valide.';if(!val(f,'tel'))return 'Indiquez un numéro de téléphone.';if(!val(f,'date'))return 'Indiquez la date du mariage.';return ''});
 
+/* Bouton flottant WhatsApp « Une question ? » */
+var wa=document.createElement('a');wa.className='lf-wa';wa.target='_blank';wa.rel='noopener';
+wa.href='https://wa.me/33651287900?text='+encodeURIComponent('Bonjour Lmoh, j’ai une question : ');
+wa.setAttribute('aria-label','Une question ? Écrivez-moi sur WhatsApp');
+wa.innerHTML='<span class="lf-wa-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.2c-4.9 0-8.8 3.5-8.8 7.9 0 2.3 1.1 4.4 2.9 5.9l-.9 3.6 3.8-2.1c.9.3 1.9.4 3 .4 4.9 0 8.8-3.5 8.8-7.8S16.9 3.2 12 3.2z" fill="none" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/><circle cx="8.3" cy="11.1" r="1.1" fill="#fff"/><circle cx="12" cy="11.1" r="1.1" fill="#fff"/><circle cx="15.7" cy="11.1" r="1.1" fill="#fff"/></svg></span><span class="lf-wa-txt">Une question ?</span>';
+document.body.appendChild(wa);
+document.addEventListener('click',function(){var lb=document.getElementById('lb');wa.classList.toggle('lf-wa-off',!!(lb&&lb.classList.contains('open')))},true);
+
 var r=location.hash.replace(/^#/,'');
 if(r==='/offres'||r==='/fiche-mariage'||r==='/confidentialite'){window.dispatchEvent(new HashChangeEvent('hashchange'))}
 })();
