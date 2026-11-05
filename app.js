@@ -17,6 +17,7 @@ document.body.classList.add('lay-'+['a','b','c'][SEED%3]);
 var tag=document.querySelector('.hero .tag');if(tag)tag.textContent='Photographe & vidéaste professionnel';
 var sj=document.createElement('script');sj.src='selection.js';document.body.appendChild(sj);
 var fj=document.createElement('script');fj.src='films.js';document.body.appendChild(fj);
+var fo=document.createElement('script');fo.src='forms.js';document.body.appendChild(fo);
 
 /* --- Structure ajoutée : onglet Naissance, section Films, mariage au bord du lac --- */
 var ddList=document.querySelector('#dd ul');
