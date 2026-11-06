@@ -1,0 +1,18 @@
+"""Planches d'apercu de videos du Drive (pour choisir les meilleurs plans). Jobs : jobs-preview/*.json = [{"id","slug"}]."""
+import glob, json, os, subprocess
+import gdown
+os.makedirs('maquette/preview', exist_ok=True); os.makedirs('tmp', exist_ok=True)
+for jf in sorted(glob.glob('jobs-preview/*.json')):
+    for it in json.load(open(jf)):
+        try:
+            src = gdown.download(id=it['id'], output='tmp/v', quiet=True)
+            d = float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', src],
+                                     capture_output=True, text=True).stdout.strip() or 1)
+            n = int(it.get('n', 12)); fps = n / max(d, 1)
+            subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', src, '-vf',
+                            f'fps={fps:.5f},scale=360:-2,drawtext=text=%{{pts\\:hms}}:x=8:y=8:fontsize=22:fontcolor=white:box=1:boxcolor=black@0.5,tile=4x3',
+                            '-frames:v', '1', f"maquette/preview/{it['slug']}.jpg"], check=True)
+            os.remove(src)
+        except Exception as e:
+            open('maquette/preview/erreurs.txt', 'a').write(f"{it.get('slug')} {e}\n")
+    os.remove(jf)
