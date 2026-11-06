@@ -11,12 +11,14 @@ concurrency:
 jobs:
   process:
     runs-on: ubuntu-latest
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - run: sudo apt-get update -qq -o Acquire::Retries=3 && sudo apt-get install -y -qq -o Acquire::Retries=3 ffmpeg
+        timeout-minutes: 10
       - run: pip install -q gdown==5.2.0 pillow==11.0.0
       - run: python tools/process.py
       - run: |
