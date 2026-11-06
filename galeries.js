@@ -39,6 +39,8 @@ function fill(m){
  });
  var v=(m.videos||[]).filter(function(x){return /monde-/.test(x[0])})[0],gf=document.getElementById('gFilm');
  if(v&&gf){gf.innerHTML='<video controls playsinline preload="none" poster="'+v[1]+'" src="'+v[0]+'"></video>';gf.hidden=false}
+ var sv=(m.videos||[]).filter(function(x){return /pro-seminaire/.test(x[0])})[0],gs=document.getElementById('gSem');
+ if(sv&&gs&&!gs.innerHTML){gs.innerHTML='<video controls playsinline preload="none" poster="'+sv[1]+'" src="'+sv[0]+'"></video>';gs.hidden=false}
 }
 /* Page Pro renommée « Entreprise » : événements d'abord, puis films et images de marque */
 var MEDIA=null;
