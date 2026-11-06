@@ -36,7 +36,17 @@ for jf in sorted(glob.glob('jobs-montage/*.json')):
         vl, al = f'x{i}', f'y{i}'
     total = sum(float(c['t']) for c in job['clips']) - F * (n - 1)
     parts.append(f"[{vl}]fade=t=in:st=0:d=0.8,fade=t=out:st={total - 1.2:.2f}:d=1.2[vout]")
-    parts.append(f"[{al}]volume={job.get('volume', 0.8)},afade=t=in:st=0:d=0.8,afade=t=out:st={total - 1.2:.2f}:d=1.2[aout]")
+    m = job.get('music')
+    if m:
+        mp = '/tmp/music-src'
+        gdown.download(id=m['id'], output=mp, quiet=True)
+        files['__music__'] = mp
+        cmd += ['-ss', str(m.get('ss', 0)), '-t', f'{total + 1:.2f}', '-i', mp]
+        parts.append(f"[{al}]volume={job.get('volume', 0.25)}[amb]")
+        parts.append(f"[{n}:a]aresample=48000,aformat=channel_layouts=stereo,atrim=0:{total:.2f},asetpts=PTS-STARTPTS,volume={m.get('volume', 1.0)}[mus]")
+        parts.append(f"[amb][mus]amix=inputs=2:duration=first:normalize=0,afade=t=in:st=0:d=0.6,afade=t=out:st={total - 1.8:.2f}:d=1.8,alimiter=limit=0.95[aout]")
+    else:
+        parts.append(f"[{al}]volume={job.get('volume', 0.8)},afade=t=in:st=0:d=0.8,afade=t=out:st={total - 1.2:.2f}:d=1.2[aout]")
     out = f"video/{job['out']}.mp4"
     cmd += ['-filter_complex', ';'.join(parts), '-map', '[vout]', '-map', '[aout]', '-c:v', 'libx264', '-preset', 'slow',
             '-crf', '23', '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart', out]
