@@ -1,0 +1,29 @@
+name: Montage video
+on:
+  push:
+    paths: ['jobs-montage/*.json']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: media
+  cancel-in-progress: false
+jobs:
+  montage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - run: pip install -q gdown==5.2.0 pillow==11.0.0
+      - run: python tools/montage.py
+      - run: python tools/process.py
+      - run: |
+          git config user.name "lmoh-robot"
+          git config user.email "lmoh-robot@users.noreply.github.com"
+          git add -A ':!tmp'
+          git commit -m "Montage video" || echo "Rien"
+          git pull --rebase -q || true
+          git push
