@@ -11,7 +11,7 @@ for jf in sorted(glob.glob('jobs-preview/*.json')):
             d = float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', src],
                                      capture_output=True, text=True).stdout.strip() or 1)
             n = int(it.get('n', 12)); fps = n / max(d, 1)
-            txt = f",drawtext=fontfile={FONT}:text=%{{pts\\:hms}}:x=8:y=8:fontsize=22:fontcolor=white:box=1:boxcolor=black@0.5" if os.path.exists(FONT) else ''
+            txt = f",drawtext=fontfile={FONT}:text=%{{pts\\:hms}}:x=8:y=8:fontsize=22:fontcolor=white:box=1:boxcolor=black@0.5" if False else ''
             subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', src, '-vf',
                             f'fps={fps:.5f},scale=360:-2{txt},tile=4x3',
                             '-frames:v', '1', f"maquette/preview/{it['slug']}.jpg"], check=True)
