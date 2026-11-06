@@ -11,6 +11,11 @@ def has_audio(p):
 os.makedirs('video', exist_ok=True)
 for jf in sorted(glob.glob('jobs-montage/*.json')):
     job = json.load(open(jf))
+    if job.get('poster_only'):
+        subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-ss', str(job.get('at', 2)), '-i', f"video/{job['out']}.mp4",
+                        '-frames:v', '1', '-q:v', '3', f"video/{job['out']}.jpg"], check=True)
+        os.remove(jf)
+        continue
     W, H, F = job.get('w', 1280), job.get('h', 720), float(job.get('fade', 0.6))
     files = {}
     for c in job['clips']:
