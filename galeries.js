@@ -49,7 +49,7 @@ function proSetup(n){
  var t=page.querySelector('.title');
  if(t){var h=t.querySelector('h1');if(h)h.textContent='Entreprise';var p=t.querySelector('p');if(p)p.textContent='Séminaires, soirées d’entreprise, salons, team building, films de marque et photos produit : des images professionnelles pour votre communication, réalisées avec discrétion à Lyon et partout en France.'}
  if(!page.querySelector('[data-gcat="seminaire"]')){
-  var html='<section class="chap" data-gcat="seminaire" hidden><div class="chap-head rv"><span class="num">Événement</span><h2>Séminaires et soirées d’entreprise</h2><p>L’énergie de vos équipes, les échanges, la fête : en photo et en vidéo.</p></div><div class="grid"></div>'+
+  var html='<section class="chap" data-gcat="seminaire" hidden><div class="chap-head rv"><span class="num">Événement</span><h2>Séminaires et soirées d’entreprise</h2><p>L’énergie de vos équipes, les échanges, la fête : en photo et en vidéo.</p></div><div class="g-film" id="gSem" hidden></div><div class="grid"></div>'+
   '<p class="g-read">À lire : <a href="journal/photographe-seminaire-lyon-checklist/">la checklist de l’organisateur de séminaire</a> · <a href="journal/photographe-evenementiel-entreprise-lyon/">photographe vidéaste événementiel à Lyon</a></p></section>';
   if(t)t.insertAdjacentHTML('afterend',html);else (page.querySelector('.wrap')||page).insertAdjacentHTML('afterbegin',html);
  }
