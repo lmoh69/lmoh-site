@@ -8,6 +8,10 @@ for jf in sorted(glob.glob('jobs-preview/*.json')):
         src = '/tmp/preview-src'
         try:
             gdown.download(id=it['id'], output=src, quiet=True)
+            if it.get('audio'):
+                subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', src, '-vn', '-ac', '1', '-b:a', '64k',
+                                f"maquette/preview/{it['slug']}.m4a"], check=True)
+                continue
             d = float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', src],
                                      capture_output=True, text=True).stdout.strip() or 1)
             n = int(it.get('n', 12)); fps = n / max(d, 1)
