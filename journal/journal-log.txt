@@ -10,3 +10,5 @@ publie : photographe-mariage-oriental-lyon
 publie : seance-photo-couple-lyon-spots
 2026-11-03
 publie : photographe-seminaire-lyon-checklist
+2026-11-06
+publie : video-seminaire-aftermovie-evenement-entreprise-lyon
