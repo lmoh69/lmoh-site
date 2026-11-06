@@ -4,8 +4,7 @@
 var CH=[
  {cat:'cannes',page:'/mariage',num:'Côte d’Azur',title:'Un mariage à Cannes',text:'Robes de soie, chapeau de paille et vue sur la mer : une journée en plein soleil.',alt:'Mariage à Cannes'},
  {cat:'chateau',page:'/mariage',num:'Au château',title:'Un mariage au château',text:'Des préparatifs feutrés, un cortège en vert sauge et la lumière douce du parc.',alt:'Mariage au château'},
- {cat:'orthodoxe',page:'/mariage',num:'Cérémonie',title:'Un mariage orthodoxe',text:'Couronnes, cierges et chants, puis un parc où se promènent les paons.',alt:'Mariage orthodoxe'},
- {cat:'seminaire',page:'/pro',num:'Événement',title:'Événements d’entreprise',text:'Séminaires, soirées et cocktails : l’énergie de vos équipes, en photo et en vidéo.',alt:'Soirée d’entreprise'}
+ {cat:'orthodoxe',page:'/mariage',num:'Cérémonie',title:'Un mariage orthodoxe',text:'Couronnes, cierges et chants, puis un parc où se promènent les paons.',alt:'Mariage orthodoxe'}
 ];
 function head(c){return '<div class="chap-head rv" style="margin-top:clamp(4rem,8vw,6rem)"><span class="num">'+c.num+'</span><h2>'+c.title+'</h2><p>'+c.text+'</p></div>'}
 function addChapters(){
@@ -41,11 +40,30 @@ function fill(m){
  var v=(m.videos||[]).filter(function(x){return /monde-/.test(x[0])})[0],gf=document.getElementById('gFilm');
  if(v&&gf){gf.innerHTML='<video controls playsinline preload="none" poster="'+v[1]+'" src="'+v[0]+'"></video>';gf.hidden=false}
 }
+/* Page Pro renommée « Entreprise » : événements d'abord, puis films et images de marque */
+var MEDIA=null;
+function proSetup(n){
+ var page=document.querySelector('[data-page="/pro"]'),link=document.querySelector('#dd a[href="#/pro"]');
+ if(!page||!link){if((n||0)<60)setTimeout(function(){proSetup((n||0)+1)},100);return}
+ link.textContent='Entreprise';
+ var t=page.querySelector('.title');
+ if(t){var h=t.querySelector('h1');if(h)h.textContent='Entreprise';var p=t.querySelector('p');if(p)p.textContent='Séminaires, soirées d’entreprise, salons, team building, films de marque et photos produit : des images professionnelles pour votre communication, réalisées avec discrétion à Lyon et partout en France.'}
+ if(!page.querySelector('[data-gcat="seminaire"]')){
+  var html='<section class="chap" data-gcat="seminaire" hidden><div class="chap-head rv"><span class="num">Événement</span><h2>Séminaires et soirées d’entreprise</h2><p>L’énergie de vos équipes, les échanges, la fête : en photo et en vidéo.</p></div><div class="grid"></div>'+
+  '<p class="g-read">À lire : <a href="journal/photographe-seminaire-lyon-checklist/">la checklist de l’organisateur de séminaire</a> · <a href="journal/photographe-evenementiel-entreprise-lyon/">photographe vidéaste événementiel à Lyon</a></p></section>';
+  if(t)t.insertAdjacentHTML('afterend',html);else (page.querySelector('.wrap')||page).insertAdjacentHTML('afterbegin',html);
+ }
+ if(MEDIA)fill(MEDIA);
+ if(location.hash==='#/pro')window.dispatchEvent(new HashChangeEvent('hashchange'));
+}
+window.addEventListener('hashchange',function(){if(location.hash==='#/entreprise')location.replace('#/pro')});
+if(location.hash==='#/entreprise')location.replace('#/pro');
 addChapters();
+proSetup(0);
 fetch('media.json',{cache:'no-cache'}).then(function(r){return r.json()}).then(function(m){
- fill(m);
+ MEDIA=m;fill(m);
  var r=location.hash.replace(/^#/,'');
  if(['/famille','/monde','/mariage','/pro'].indexOf(r)>-1)window.dispatchEvent(new HashChangeEvent('hashchange'));
 }).catch(function(){});
-var st=document.createElement('style');st.textContent='.g-film{margin:0 0 2rem}.g-film video{width:100%;max-height:78vh;background:#000;display:block}';document.head.appendChild(st);
+var st=document.createElement('style');st.textContent='.g-read{margin:1.6rem 0 0;font-size:.95rem;color:var(--muted)}.g-read a{color:inherit}.g-film{margin:0 0 2rem}.g-film video{width:100%;max-height:78vh;background:#000;display:block}';document.head.appendChild(st);
 })();
