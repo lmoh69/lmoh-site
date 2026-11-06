@@ -18,6 +18,7 @@ var tag=document.querySelector('.hero .tag');if(tag)tag.textContent='Photographe
 var sj=document.createElement('script');sj.src='selection.js';document.body.appendChild(sj);
 var fj=document.createElement('script');fj.src='films.js';document.body.appendChild(fj);
 var fo=document.createElement('script');fo.src='forms.js';document.body.appendChild(fo);
+var ga=document.createElement('script');ga.src='galeries.js';document.body.appendChild(ga);
 
 /* --- Structure ajoutée : onglet Naissance, section Films, mariage au bord du lac --- */
 var ddList=document.querySelector('#dd ul');
