@@ -45,5 +45,7 @@ form label.lf-consent{display:flex;gap:.7rem;align-items:flex-start;margin:1.4re
 .lf-wa-ico{width:40px;height:40px;border-radius:50%;background:#25d366;display:grid;place-items:center;flex:none}
 .lf-wa-ico svg{width:24px;height:24px}
 .lf-wa-off{opacity:0;pointer-events:none}
+body.onhero .lf-wa{bottom:calc(5.6rem + env(safe-area-inset-bottom,0px))}
+.lf-wa{transition:transform .3s var(--ease),opacity .3s,bottom .35s var(--ease)}
 @media (max-width:600px){.lf-wa{padding:.4rem .9rem .4rem .4rem;font-size:.82rem}.lf-wa-ico{width:36px;height:36px}}
 @media (prefers-reduced-motion:reduce){.lf-wa{transition:none}}
