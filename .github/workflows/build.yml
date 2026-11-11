@@ -1,7 +1,7 @@
 name: Pages Journal et anglais
 on:
   push:
-    paths: ['journal/**', 'tools/build_site.py', 'tools/process_ai.py', 'tools/ai_request.py', 'tools/catalog.json', 'tools/gbp.py']
+    paths: ['journal/**', 'tools/build_site.py', 'tools/process_ai.py', 'tools/ai_request.py', 'tools/catalog.json', 'tools/gbp.py', 'tools/services.json', 'tools/services.py']
   schedule:
     - cron: '0 3 * * 2,5'
   workflow_dispatch:
