@@ -1,0 +1,7 @@
+{
+  "poll_url": "https://api.segmind.com/v1/requests/d80d451d2dabe3c58364e33ead7aa277",
+  "request_id": "d80d451d2dabe3c58364e33ead7aa277",
+  "response_url": "https://api.segmind.com/v2/requests/d80d451d2dabe3c58364e33ead7aa277",
+  "status": "QUEUED",
+  "status_url": "https://api.segmind.com/v2/requests/d80d451d2dabe3c58364e33ead7aa277/status"
+}
