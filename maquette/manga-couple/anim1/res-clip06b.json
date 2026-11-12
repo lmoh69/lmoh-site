@@ -1,0 +1,18 @@
+{
+  "error": "Insufficient credits. You have 0.01 credits available (3.29 of your 3.31 credits are held by requests still in progress), but need at least 1.58 credits to proceed. Recharge [here](https://platform.segmind.com/billing?type=TOPUP)",
+  "input": {
+    "aspect_ratio": "9:16",
+    "duration": 4,
+    "first_frame_url": "https://raw.githubusercontent.com/lmoh69/lmoh-site/main/maquette/manga-couple/anim1/kf06-film.jpg",
+    "generate_audio": true,
+    "prompt": "Anime, same art style and characters. Over the shoulder of the couple: on the phone screen the video plays, the couple laughing on the blue scooter riding through the colorful Italian seaside village, her scarf flying. The couple leans closer to the screen, moved. The photo canvas on the wall stays perfectly still. Soft happy ambient sound of a scooter and sea, no dialogue, no music, no subtitles.",
+    "resolution": "720p"
+  },
+  "input_truncated": false,
+  "metrics": {
+    "total_time": 8.429512
+  },
+  "model": "seedance-2.0",
+  "request_id": "c3990db9c8e4b4972f3d6760f2ed9ff0",
+  "status": "FAILED"
+}
