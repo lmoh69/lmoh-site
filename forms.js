@@ -37,7 +37,8 @@ var fiche='<section class="page top-space pad" data-page="/fiche-mariage"><div c
 '<label for="fa">Adresse postale (pour l’envoi de vos tirages ou de votre album)</label><input id="fa" name="adresse" autocomplete="street-address">'+
 '<h2 class="lf-part">Votre mariage</h2>'+
 '<div class="row2"><div><label for="fd">Date</label><input id="fd" name="date" type="date" required></div><div><label for="fi">Nombre d’invités (environ)</label><input id="fi" name="invites" type="number" min="0" step="10"></div></div>'+
-'<div class="row2"><div><label for="fc">Lieu de la cérémonie</label><input id="fc" name="ceremonie"></div><div><label for="fr">Lieu de la réception</label><input id="fr" name="reception"></div></div>'+
+'<div class="row2"><div><label for="fc">Lieu de la cérémonie (nom et ville)</label><input id="fc" name="ceremonie"></div><div><label for="fr">Lieu de la réception (nom)</label><input id="fr" name="reception"></div></div>'+
+'<label for="fra">Adresse du lieu de réception</label><input id="fra" name="reception_adresse" autocomplete="off">'+
 '<fieldset class="lf-set"><legend>Prestation réservée</legend><div class="lf-chips">'+
 '<label class="lf-chip"><input type="radio" name="formule" value="photo"><span>Photo</span></label><label class="lf-chip"><input type="radio" name="formule" value="vidéo"><span>Vidéo</span></label><label class="lf-chip"><input type="radio" name="formule" value="photo et vidéo"><span>Photo et vidéo</span></label></div></fieldset>'+
 '<h2 class="lf-part">Le jour J</h2>'+
