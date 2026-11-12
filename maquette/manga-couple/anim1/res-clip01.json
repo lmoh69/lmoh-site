@@ -1,0 +1,32 @@
+{
+  "input": {
+    "aspect_ratio": "9:16",
+    "duration": 5,
+    "first_frame_url": "https://raw.githubusercontent.com/lmoh69/lmoh-site/main/maquette/manga-couple/anim1/kf01-cadeau.jpg",
+    "generate_audio": true,
+    "prompt": "Anime comedy, same art style and characters. The wife lifts the photo canvas from the gift box and says in French, warm excited young woman voice, lips synced: \u00ab Oh ! Notre voyage de noces ! \u00bb The card lands on the husband head, he grabs it, squints and reads in French, cheerful silly young man voice, lips synced: \u00ab R\u00e9veille-la avec ton t\u00e9l\u00e9phone ? Facile ! \u00bb Only this French dialogue. No music, no subtitles.",
+    "resolution": "720p"
+  },
+  "input_truncated": false,
+  "metrics": {
+    "cost": 0.802419849,
+    "inference_time": 137.025134,
+    "queue_time": 0.045544,
+    "remaining_credits": 5.7689381384,
+    "total_time": 137.070678
+  },
+  "model": "seedance-2.0",
+  "output": "https://images.segmind.com/generations/577238b0-51b5-45e4-87e7-900714e211be/c64d2dc7e7bd72a8c44ce3a89c2b55db.mp4",
+  "prompt": "Anime comedy, same art style and characters. The wife lifts the photo canvas from the gift box and says in French, warm excited young woman voice, lips synced: \u00ab Oh ! Notre voyage de noces ! \u00bb The card lands on the husband head, he grabs it, squints and reads in French, cheerful silly young man voice, lips synced: \u00ab R\u00e9veille-la avec ton t\u00e9l\u00e9phone ? Facile ! \u00bb Only this French dialogue. No music, no subtitles.",
+  "request_id": "c64d2dc7e7bd72a8c44ce3a89c2b55db",
+  "status": "COMPLETED",
+  "timings": {
+    "inference": 137.025134
+  },
+  "video": {
+    "content_type": "video/mp4",
+    "file_name": "c64d2dc7e7bd72a8c44ce3a89c2b55db.mp4",
+    "file_size": "3413764",
+    "url": "https://images.segmind.com/generations/577238b0-51b5-45e4-87e7-900714e211be/c64d2dc7e7bd72a8c44ce3a89c2b55db.mp4"
+  }
+}
