@@ -1,0 +1,20 @@
+name: Diagnostic IA gratuite
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  models: read
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Tester les adresses
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          B='{"model":"openai/gpt-4.1-mini","messages":[{"role":"user","content":"Dis bonjour en un mot"}]}'
+          echo "== 1 models.github.ai sans version"; curl -s -i -X POST https://models.github.ai/inference/chat/completions -H "Authorization: Bearer $GITHUB_TOKEN" -H 'Content-Type: application/json' -d "$B" | head -c 700; echo
+          echo "== 2 models.github.ai avec en-tetes GitHub"; curl -s -i -X POST https://models.github.ai/inference/chat/completions -H "Authorization: Bearer $GITHUB_TOKEN" -H 'Accept: application/vnd.github+json' -H 'X-GitHub-Api-Version: 2022-11-28' -H 'Content-Type: application/json' -d "$B" | head -c 700; echo
+          echo "== 3 catalogue"; curl -s -i https://models.github.ai/catalog/models -H "Authorization: Bearer $GITHUB_TOKEN" -H 'Accept: application/vnd.github+json' | head -c 900; echo
+          echo "== 4 azure"; curl -s -i -X POST https://models.inference.ai.azure.com/chat/completions -H "Authorization: Bearer $GITHUB_TOKEN" -H 'Content-Type: application/json' -d '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"Dis bonjour"}]}' | head -c 700; echo
