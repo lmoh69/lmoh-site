@@ -1,0 +1,8 @@
+{
+  "detail": "Request is still in progress",
+  "model": "seedance-2.0",
+  "request_id": "cc799346bab61fb0068a746939faf6a5",
+  "response_url": "https://api.segmind.com/v2/requests/cc799346bab61fb0068a746939faf6a5",
+  "status": "QUEUED",
+  "status_url": "https://api.segmind.com/v2/requests/cc799346bab61fb0068a746939faf6a5/status"
+}
