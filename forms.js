@@ -89,6 +89,8 @@ function wire(id,build,check){
   f.addEventListener('submit',function(ev){ev.preventDefault();
     var msg=check(f);if(msg){err.textContent=msg;return}
     err.textContent='';var b=f.querySelector('button');b.disabled=true;
+    if(id==='lfFiche'){var d=build(f),o={};Object.keys(d).forEach(function(k){if(k!=='type'&&k!=='site'&&k!=='prestataires'&&k!=='presta_resume')o[k]=d[k]});o.prestataires=prestas(f);d.data=JSON.stringify(o);
+      fetch(HOOK,{method:'POST',body:new URLSearchParams(d)}).then(function(r){return r.json()}).then(function(j){if(j&&j.code){try{localStorage.setItem('lmoh_espace_code',j.code)}catch(e){}location.href='espace/#'+j.code}else{box.classList.add('lf-sent')}}).catch(function(){box.classList.add('lf-sent')});return}
     send(build(f)).then(function(){box.classList.add('lf-sent');if(id==='lfFiche'||id==='lfOffres')window.scrollTo(0,box.offsetTop-90)})
     .catch(function(){b.disabled=false;err.textContent='L’envoi n’a pas fonctionné. Réessayez, ou écrivez-moi à contact@lmohphotography.com.'});
   });
