@@ -1,0 +1,32 @@
+{
+  "input": {
+    "aspect_ratio": "9:16",
+    "duration": 4,
+    "first_frame_url": "https://raw.githubusercontent.com/lmoh69/lmoh-site/main/maquette/manga-couple/anim1/kf08-bisou-c.jpg",
+    "generate_audio": true,
+    "prompt": "Anime comedy, same art style and characters. The husband, goofy and hopeful, points his phone at his wife face and asks in French, cheerful silly young man voice, lips synced: \u00ab Et toi, tu fais un film aussi ? \u00bb The wife bursts out laughing, then kisses his cheek; a big pink heart bursts with sparkles. Only this French dialogue, then her laugh. No music, no subtitles.",
+    "resolution": "720p"
+  },
+  "input_truncated": false,
+  "metrics": {
+    "cost": 0.643262193,
+    "inference_time": 264.909579,
+    "queue_time": 0.078207,
+    "remaining_credits": 15.2593154006,
+    "total_time": 264.987786
+  },
+  "model": "seedance-2.0",
+  "output": "https://images.segmind.com/generations/577238b0-51b5-45e4-87e7-900714e211be/1954144be4e4f18f5356bb56061cf870.mp4",
+  "prompt": "Anime comedy, same art style and characters. The husband, goofy and hopeful, points his phone at his wife face and asks in French, cheerful silly young man voice, lips synced: \u00ab Et toi, tu fais un film aussi ? \u00bb The wife bursts out laughing, then kisses his cheek; a big pink heart bursts with sparkles. Only this French dialogue, then her laugh. No music, no subtitles.",
+  "request_id": "1954144be4e4f18f5356bb56061cf870",
+  "status": "COMPLETED",
+  "timings": {
+    "inference": 264.909579
+  },
+  "video": {
+    "content_type": "video/mp4",
+    "file_name": "1954144be4e4f18f5356bb56061cf870.mp4",
+    "file_size": "2325383",
+    "url": "https://images.segmind.com/generations/577238b0-51b5-45e4-87e7-900714e211be/1954144be4e4f18f5356bb56061cf870.mp4"
+  }
+}
