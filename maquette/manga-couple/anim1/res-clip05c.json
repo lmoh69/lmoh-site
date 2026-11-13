@@ -1,0 +1,32 @@
+{
+  "input": {
+    "aspect_ratio": "9:16",
+    "duration": 4,
+    "first_frame_url": "https://raw.githubusercontent.com/lmoh69/lmoh-site/main/maquette/manga-couple/anim1/kf05-coin.jpg",
+    "generate_audio": true,
+    "prompt": "Anime, same art style and characters. Calm and smiling, the wife holds her phone right next to the corner of the photo canvas; the small golden wireless signal arcs pulse and glow brighter; she says softly in French, warm young woman voice, lips synced: \u00ab Juste comme \u00e7a. \u00bb A soft magical chime. The husband peeks in, amazed. The photo on the canvas stays perfectly still. Only this French dialogue. No music, no subtitles.",
+    "resolution": "720p"
+  },
+  "input_truncated": false,
+  "metrics": {
+    "cost": 0.643262193,
+    "inference_time": 179.277895,
+    "queue_time": 263.07628,
+    "remaining_credits": 3.3068723578,
+    "total_time": 442.354175
+  },
+  "model": "seedance-2.0",
+  "output": "https://images.segmind.com/generations/577238b0-51b5-45e4-87e7-900714e211be/941d4c2eaf0c85562734d3be2115bd1f.mp4",
+  "prompt": "Anime, same art style and characters. Calm and smiling, the wife holds her phone right next to the corner of the photo canvas; the small golden wireless signal arcs pulse and glow brighter; she says softly in French, warm young woman voice, lips synced: \u00ab Juste comme \u00e7a. \u00bb A soft magical chime. The husband peeks in, amazed. The photo on the canvas stays perfectly still. Only this French dialogue. No music, no subtitles.",
+  "request_id": "941d4c2eaf0c85562734d3be2115bd1f",
+  "status": "COMPLETED",
+  "timings": {
+    "inference": 179.277895
+  },
+  "video": {
+    "content_type": "video/mp4",
+    "file_name": "941d4c2eaf0c85562734d3be2115bd1f.mp4",
+    "file_size": "1539234",
+    "url": "https://images.segmind.com/generations/577238b0-51b5-45e4-87e7-900714e211be/941d4c2eaf0c85562734d3be2115bd1f.mp4"
+  }
+}
