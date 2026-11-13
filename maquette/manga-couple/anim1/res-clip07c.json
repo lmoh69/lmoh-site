@@ -1,0 +1,32 @@
+{
+  "input": {
+    "aspect_ratio": "9:16",
+    "duration": 5,
+    "first_frame_url": "https://raw.githubusercontent.com/lmoh69/lmoh-site/main/maquette/manga-couple/anim1/kf07-larmes.jpg",
+    "generate_audio": true,
+    "prompt": "Anime comedy, same art style and characters. The husband cries huge comic waterfall tears of joy and sobs in French, cheerful silly young man voice now trembling, lips synced: \u00ab C'est nous... On \u00e9tait beaux... \u00bb The wife smiles tenderly and pats his head, and says in French, warm young woman voice, lips synced: \u00ab On l'est toujours. \u00bb Golden sparkles. Only this French dialogue. No music, no subtitles.",
+    "resolution": "720p"
+  },
+  "input_truncated": false,
+  "metrics": {
+    "cost": 0.802419849,
+    "inference_time": 230.883425,
+    "queue_time": 0.039691,
+    "remaining_credits": 16.8312474426,
+    "total_time": 230.923116
+  },
+  "model": "seedance-2.0",
+  "output": "https://images.segmind.com/generations/577238b0-51b5-45e4-87e7-900714e211be/0c248f0e30a6dddf7477b8c1b0cf0fe9.mp4",
+  "prompt": "Anime comedy, same art style and characters. The husband cries huge comic waterfall tears of joy and sobs in French, cheerful silly young man voice now trembling, lips synced: \u00ab C'est nous... On \u00e9tait beaux... \u00bb The wife smiles tenderly and pats his head, and says in French, warm young woman voice, lips synced: \u00ab On l'est toujours. \u00bb Golden sparkles. Only this French dialogue. No music, no subtitles.",
+  "request_id": "0c248f0e30a6dddf7477b8c1b0cf0fe9",
+  "status": "COMPLETED",
+  "timings": {
+    "inference": 230.883425
+  },
+  "video": {
+    "content_type": "video/mp4",
+    "file_name": "0c248f0e30a6dddf7477b8c1b0cf0fe9.mp4",
+    "file_size": "3357306",
+    "url": "https://images.segmind.com/generations/577238b0-51b5-45e4-87e7-900714e211be/0c248f0e30a6dddf7477b8c1b0cf0fe9.mp4"
+  }
+}
