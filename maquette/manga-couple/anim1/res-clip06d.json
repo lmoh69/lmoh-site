@@ -1,0 +1,32 @@
+{
+  "input": {
+    "aspect_ratio": "9:16",
+    "duration": 4,
+    "first_frame_url": "https://raw.githubusercontent.com/lmoh69/lmoh-site/main/maquette/manga-couple/anim1/kf06-film-gros-plan.jpg",
+    "generate_audio": true,
+    "prompt": "Anime, same art style and characters. Close-up: on the phone screen the video plays and moves, the couple rides the blue scooter down the colorful Italian street, laughing, her scarf flying in the wind, the camera of the video follows them. Around the phone, the wife and husband react amazed and moved, the wife whispers in French, warm young woman voice, lips synced: \u00ab Oh... regarde ! \u00bb The photo canvas in the background stays perfectly still. Soft scooter and sea ambience. No music, no subtitles.",
+    "resolution": "720p"
+  },
+  "input_truncated": false,
+  "metrics": {
+    "cost": 0.643262193,
+    "inference_time": 157.579816,
+    "queue_time": 0.929561,
+    "remaining_credits": 13.5611333586,
+    "total_time": 158.509377
+  },
+  "model": "seedance-2.0",
+  "output": "https://images.segmind.com/generations/577238b0-51b5-45e4-87e7-900714e211be/bd0a6913d1d71ccfbc6800c1c0e8f3df.mp4",
+  "prompt": "Anime, same art style and characters. Close-up: on the phone screen the video plays and moves, the couple rides the blue scooter down the colorful Italian street, laughing, her scarf flying in the wind, the camera of the video follows them. Around the phone, the wife and husband react amazed and moved, the wife whispers in French, warm young woman voice, lips synced: \u00ab Oh... regarde ! \u00bb The photo canvas in the background stays perfectly still. Soft scooter and sea ambience. No music, no subtitles.",
+  "request_id": "bd0a6913d1d71ccfbc6800c1c0e8f3df",
+  "status": "COMPLETED",
+  "timings": {
+    "inference": 157.579816
+  },
+  "video": {
+    "content_type": "video/mp4",
+    "file_name": "bd0a6913d1d71ccfbc6800c1c0e8f3df.mp4",
+    "file_size": "3511554",
+    "url": "https://images.segmind.com/generations/577238b0-51b5-45e4-87e7-900714e211be/bd0a6913d1d71ccfbc6800c1c0e8f3df.mp4"
+  }
+}
