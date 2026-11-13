@@ -10,7 +10,7 @@ function checks(f,n){return [].slice.call(f.querySelectorAll('input[name="'+n+'"
 var PRIV='<a href="#/confidentialite">Confidentialité</a>';
 var PRESTA=[['lieu','Lieu de réception','Nom du contact sur place'],['planner','Wedding planner, organisation','Nom'],['traiteur','Traiteur','Nom'],['fleuriste','Fleuriste','Nom'],['deco','Décorateur, scénographie','Nom'],['patissier','Pâtissier, pièce montée','Nom'],['dj','DJ, musiciens, animation','Nom'],['coiffure','Coiffure','Nom'],['maquillage','Maquillage','Nom'],['robe','Robe, costume (créateur ou boutique)','Nom'],['negafa','Négafa','Nom'],['autre','Autre prestataire','Nom et métier']];
 function insta(v){v=String(v||'').trim();if(!v)return '';v=v.replace(/^(https?:\/\/)?(www\.)?instagram\.com\//i,'').replace(/[\/?#].*/,'').replace(/^@+/,'').replace(/\s+/g,'');return v?'@'+v:''}
-function prestas(f){return PRESTA.map(function(p){return {type:p[1],nom:val(f,'p_'+p[0]+'_nom'),tel:val(f,'p_'+p[0]+'_tel'),instagram:insta(val(f,'p_'+p[0]+'_ig'))}}).filter(function(p){return p.nom||p.tel||p.instagram})}
+function prestas(f){return PRESTA.map(function(p){return {k:p[0],type:p[1],nom:val(f,'p_'+p[0]+'_nom'),tel:val(f,'p_'+p[0]+'_tel'),instagram:insta(val(f,'p_'+p[0]+'_ig'))}}).filter(function(p){return p.nom||p.tel||p.instagram})}
 var CHIPS=[['mariage','Mariage'],['naissance','Grossesse et naissance'],['famille','Famille'],['couple','Couple'],['entreprise','Entreprise et événements'],['tableau','Tableau photo interactif']];
 
 var offres='<section class="page top-space pad" data-page="/offres"><div class="wrap lf-offers">'+
