@@ -59,7 +59,7 @@ var fiche='<section class="page top-space pad" data-page="/fiche-mariage"><div c
 '<div class="lf-hp" aria-hidden="true"><label for="fs">Ne pas remplir</label><input id="fs" name="site" tabindex="-1" autocomplete="off"></div>'+
 '<p class="lf-err" role="alert"></p><button class="btn" type="submit">Envoyer ma fiche</button>'+
 '<p class="lf-legal">Ces informations restent chez LMOH Photography. Elles servent à préparer votre mariage et, si vous l’avez accepté, à vous envoyer des offres. Elles ne sont jamais revendues ni partagées, et vous pouvez demander leur suppression à tout moment. '+PRIV+'</p></form>'+
-'<div class="lf-done" role="status"><h2>Merci, votre fiche est bien arrivée.</h2><p>Je reviens vers vous très vite pour préparer la suite.</p></div></div></section>';
+'<div class="lf-done" role="status"><h2>Merci, votre fiche est bien arrivée.</h2><p>Vous allez recevoir par SMS le lien de votre espace mariés, pour compléter ou modifier vos informations quand vous voulez.</p></div></div></section>';
 
 var conf='<section class="page top-space pad" data-page="/confidentialite"><div class="wrap lf-text">'+
 '<div class="title"><h1>Confidentialité</h1><p>Comment vos informations sont utilisées et protégées.</p></div>'+
