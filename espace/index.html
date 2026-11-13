@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Espace mariés | LMOH Photography</title>
+<meta name="theme-color" content="#1a1918">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="LMOH Mariés">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1918;--muted:#6b665f;--line:#e8e4de;--soft:#f5f3f0;--ok:#2f6b3a;--todo:#9a5b12;--link:#1f4f8a;--serif:"Bodoni Moda",Georgia,serif;--sans:Jost,"Helvetica Neue",Arial,sans-serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--ink);font-family:var(--sans);font-weight:400;font-size:16px;line-height:1.5;padding-bottom:env(safe-area-inset-bottom,0px)}
+a{color:var(--ink)}
+button,input,select,textarea{font:inherit;color:inherit}
+.app{max-width:560px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column}
+.hero{position:relative;height:300px;background:#222 center/cover no-repeat;color:#fff}
+.hero::after{content:"";position:absolute;inset:0;background:rgba(20,19,18,.42)}
+.hero>*{position:relative;z-index:1}
+.logo{position:absolute;top:calc(20px + env(safe-area-inset-top,0px));left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:4px}
+.logo b{font-family:var(--serif);font-weight:400;font-size:26px;line-height:1}
+.logo span{font-size:9px;letter-spacing:.32em}
+.logo span strong{font-weight:600}
+.hero-txt{position:absolute;left:24px;right:24px;bottom:24px;display:flex;flex-direction:column;gap:6px}
+.kick{font-size:11px;letter-spacing:.22em;text-transform:uppercase}
+h1{margin:0;font-family:var(--serif);font-weight:400;font-size:34px;line-height:1.1}
+.hero-txt .sub{font-size:14px}
+.cards{display:flex;gap:12px;padding:22px 24px 0}
+.card{flex:1;background:var(--soft);padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.big{font-family:var(--serif);font-size:28px;line-height:1.1}
+.small{font-size:12.5px;color:var(--muted)}
+.bar{display:flex;align-items:center;gap:10px}
+.bar i{flex:1;height:6px;background:var(--line);border-radius:3px;overflow:hidden;display:block}
+.bar i b{display:block;height:100%;background:var(--ink)}
+.bar strong{font-weight:500}
+.alert{margin:18px 24px 0;border:1px solid var(--ink);padding:16px;display:flex;flex-direction:column;gap:10px}
+.alert h2{margin:0;font-family:var(--serif);font-weight:400;font-size:22px}
+.alert p{margin:0;font-size:14px;color:var(--muted)}
+.row2b{display:flex;gap:10px;flex-wrap:wrap}
+nav.menu{padding:10px 24px 0;display:flex;flex-direction:column}
+nav.menu a{display:flex;align-items:center;gap:14px;padding:15px 0;border-bottom:1px solid var(--line);text-decoration:none;min-height:56px}
+nav.menu a span.t{flex:1;display:flex;flex-direction:column;gap:2px}
+nav.menu a span.n{font-size:16px}
+.st{font-size:13px;color:var(--muted)}.st.ok{color:var(--ok)}.st.todo{color:var(--todo)}
+.install{margin:20px 24px 0;background:var(--soft);padding:16px;display:flex;flex-direction:column;gap:8px;font-size:14px}
+.install strong{font-weight:500}
+.install ol{margin:0;padding-left:20px;color:var(--muted)}
+.foot{margin-top:auto;padding:24px 24px 28px;display:flex;flex-direction:column;gap:10px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 18px;background:var(--ink);color:#fff;border:1px solid var(--ink);text-decoration:none;font-size:12px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer}
+.btn.alt{background:#fff;color:var(--ink)}
+.btn.sm{min-height:44px;font-size:11px;letter-spacing:.12em;flex:1}
+.btn[disabled]{opacity:.5}
+.link{background:none;border:0;padding:0;text-decoration:underline;font-size:13px;color:var(--muted);cursor:pointer;align-self:flex-start}
+.top{display:flex;align-items:center;gap:6px;padding:calc(14px + env(safe-area-inset-top,0px)) 14px 4px}
+.back{width:44px;height:44px;display:flex;align-items:center;justify-content:center;text-decoration:none}
+.top .kick{color:var(--muted)}
+.view{padding:0 24px 32px}
+.view h1{font-size:32px;margin-top:4px}
+.intro{margin:8px 0 0;font-size:14px;color:var(--muted)}
+label{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 6px}
+input[type=text],input[type=email],input[type=tel],input[type=date],input[type=number],textarea,select{width:100%;border:0;border-bottom:1px solid var(--line);background:transparent;padding:8px 0;font-size:16px;border-radius:0}
+textarea{border:1px solid var(--line);padding:10px 12px;line-height:1.5;resize:vertical}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--ink)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip input{position:absolute;opacity:0;pointer-events:none}
+.chip span{display:inline-flex;align-items:center;min-height:42px;padding:0 16px;border:1px solid var(--line);font-size:14px;cursor:pointer}
+.chip input:checked+span{border-color:var(--ink);background:var(--ink);color:#fff}
+.chip input:focus-visible+span{outline:2px solid var(--link);outline-offset:2px}
+.pr{padding:16px 0 10px;border-bottom:1px solid var(--line)}
+.pr h3{margin:0;font-weight:400;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pr .g{display:grid;grid-template-columns:1fr;gap:0}
+.pr input{font-size:15px}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.45;text-transform:none;letter-spacing:0;color:var(--ink);margin:18px 0 0}
+.check input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--ink);flex:none}
+.save{position:sticky;bottom:0;background:#fff;padding:14px 0 calc(14px + env(safe-area-inset-bottom,0px));margin-top:24px;border-top:1px solid var(--line)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:12px 18px;font-size:14px;opacity:0;transition:.3s;z-index:10;max-width:90vw;text-align:center}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.center{padding:80px 28px;text-align:center;display:flex;flex-direction:column;gap:16px;align-items:center}
+.center h1{font-size:30px}
+.muted{color:var(--muted)}
+[hidden]{display:none!important}
+@media (min-width:520px){.pr .g{grid-template-columns:1.3fr 1fr 1fr;gap:0 14px}}
+</style>
+</head>
+<body>
+<div class="app" id="app"><div class="center"><p class="muted">Chargement de votre espace…</p></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+var HOOK='https://hook.eu1.make.com/6nnxb98n0ytnw2abjia5s9o5bq1ugxd7';
+var KEY='lmoh_espace_code';
+var PRESTA=[['lieu','Lieu de réception','Nom du contact sur place'],['planner','Wedding planner, organisation','Nom'],['traiteur','Traiteur','Nom'],['fleuriste','Fleuriste','Nom'],['deco','Décorateur, scénographie','Nom'],['patissier','Pâtissier, pièce montée','Nom'],['dj','DJ, musiciens, animation','Nom'],['coiffure','Coiffure','Nom'],['maquillage','Maquillage','Nom'],['robe','Robe, costume (créateur ou boutique)','Nom'],['negafa','Négafa','Nom'],['autre','Autre prestataire','Nom et métier']];
+var WA='https://wa.me/33651287900?text='+encodeURIComponent('Bonjour Lmoh, j’ai une question sur notre mariage : ');
+var app=document.getElementById('app'),D=null,CODE='';
+function E(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function v(k){return D&&D[k]?String(D[k]):''}
+function insta(x){x=String(x||'').trim();if(!x)return '';x=x.replace(/^(https?:\/\/)?(www\.)?instagram\.com\//i,'').replace(/[\/?#].*/,'').replace(/^@+/,'').replace(/\s+/g,'');return x?'@'+x:''}
+function toast(t){var el=document.getElementById('toast');el.textContent=t;el.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(function(){el.classList.remove('on')},3200)}
+function post(p){return fetch(HOOK,{method:'POST',body:new URLSearchParams(p)}).then(function(r){if(!r.ok)throw new Error(r.status);return r.text()})}
+function first(n){return String(n||'').trim().split(/\s+/)[0]||''}
+function prestaMap(){var m={};(D.prestataires||[]).forEach(function(p){m[p.k||p.type]=p});return m}
+function prestaCount(){return (D.prestataires||[]).filter(function(p){return p.nom||p.tel||p.instagram}).length}
+function daysLeft(){if(!v('date'))return null;var d=new Date(v('date')+'T12:00:00'),n=new Date();n.setHours(12,0,0,0);return Math.round((d-n)/864e5)}
+function dateFr(){if(!v('date'))return '';try{return new Date(v('date')+'T12:00:00').toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}catch(e){return v('date')}}
+function filled(keys){return keys.filter(function(k){return v(k)}).length}
+function status(){
+  var j=['date','ceremonie','reception','reception_adresse','formule','contact_nom'],dr=['deroule','groupes'],vo=['nom1','nom2','email','tel'];
+  var tot=j.length+dr.length+vo.length+3,got=filled(j)+filled(dr)+filled(vo)+Math.min(prestaCount(),3);
+  return {pct:Math.round(got*100/tot),j:filled(j)===j.length,dr:filled(dr)===dr.length,vo:filled(vo)===vo.length,pc:prestaCount()};
+}
+function chev(){return '<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 6l6 6-6 6"/></svg>'}
+function waIcon(c){return '<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="'+c+'" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3.2c-4.9 0-8.8 3.5-8.8 7.9 0 2.3 1.1 4.4 2.9 5.9l-.9 3.6 3.8-2.1c.9.3 1.9.4 3 .4 4.9 0 8.8-3.5 8.8-7.8S16.9 3.2 12 3.2z"/></svg>'}
+function standalone(){return window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true}
+
+function home(){
+  var s=status(),dl=daysLeft(),names=E(first(v('nom1')))+' &amp; '+E(first(v('nom2')));
+  var conf=v('verifie');try{if(localStorage.getItem('lmoh_conf_'+CODE))conf='oui'}catch(e){}
+  var h='<header class="hero" style="background-image:url(../photos/couple/p1020416.jpg)"><div class="logo"><b>P</b><span><strong>LMOH</strong>PHOTOGRAPHY</span></div>'+
+  '<div class="hero-txt"><span class="kick">Votre espace mariés</span><h1>'+names+'</h1><span class="sub">'+E(dateFr())+(v('reception')?' · '+E(v('reception')):'')+'</span></div></header>'+
+  '<div class="cards">'+(dl!=null&&dl>=0?'<div class="card"><span class="big">'+(dl===0?'Jour J':'J–'+dl)+'</span><span class="small">'+(dl===0?'C’est aujourd’hui':'avant le grand jour')+'</span></div>':'')+
+  '<div class="card" style="flex:1.4"><span class="small">Votre fiche est complète à</span><span class="bar"><i><b style="width:'+s.pct+'%"></b></i><strong>'+s.pct+'&nbsp;%</strong></span></div></div>';
+  if(dl!=null&&dl>0&&dl<=75&&!conf){h+='<section class="alert"><h2>J–'+dl+' : tout est à jour ?</h2><p>Vérifiez le déroulé et vos prestataires. Lmoh se coordonne avec eux avant le jour J.</p><div class="row2b"><button class="btn sm" id="okBtn">Tout est à jour</button><a class="btn sm alt" href="#'+CODE+'/presta">Je modifie</a></div></section>'}
+  h+='<nav class="menu" aria-label="Votre mariage">'+
+  item('journee','Votre journée',s.j?'<span class="st ok">Complète</span>':'<span class="st todo">À compléter</span>')+
+  item('deroule','Le déroulé et les photos de groupe',s.dr?'<span class="st ok">Complet</span>':'<span class="st todo">À compléter</span>')+
+  item('presta','Vos prestataires',s.pc?'<span class="st">'+s.pc+' renseigné'+(s.pc>1?'s':'')+'</span>':'<span class="st todo">À compléter</span>')+
+  item('vous','Vous deux et vos accords',s.vo?'<span class="st ok">Complet</span>':'<span class="st todo">À compléter</span>')+
+  '<a href="../#/client"><span class="t"><span class="n">Vos photos et votre film</span><span class="st">Disponibles ici après le mariage</span></span>'+chev()+'</a></nav>';
+  if(!standalone()&&!localStorage.getItem('lmoh_install_ok')){h+='<section class="install"><strong>Gardez votre espace sur votre téléphone</strong><ol><li>Touchez le bouton Partager (iPhone) ou le menu ⋮ (Android).</li><li>Choisissez « Sur l’écran d’accueil ».</li></ol><button class="link" id="instOk">J’ai compris</button></section>'}
+  h+='<div class="foot"><a class="btn" href="'+WA+'" target="_blank" rel="noopener">'+waIcon('#fff')+'Une question ? Écrire à Lmoh</a><p class="small" style="margin:0;text-align:center">Votre lien est personnel : ne le partagez qu’avec vos proches.</p></div>';
+  app.innerHTML=h;
+  var ok=document.getElementById('okBtn');if(ok)ok.onclick=function(){ok.disabled=true;post({action:'confirm',code:CODE}).then(function(){D.verifie='oui';try{localStorage.setItem('lmoh_conf_'+CODE,'1')}catch(e){}toast('Merci ! Lmoh est prévenu.');home()}).catch(function(){ok.disabled=false;toast('Ça n’a pas fonctionné, réessayez.')})};
+  var io=document.getElementById('instOk');if(io)io.onclick=function(){try{localStorage.setItem('lmoh_install_ok','1')}catch(e){}io.parentNode.remove()};
+}
+function item(id,t,st){return '<a href="#'+CODE+'/'+id+'"><span class="t"><span class="n">'+t+'</span>'+st+'</span>'+chev()+'</a>'}
+function top(t,intro){return '<div class="top"><a class="back" href="#'+CODE+'" aria-label="Retour à l’accueil"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a1918" stroke-width="1.6"><path d="M15 6l-6 6 6 6"/></svg></a><span class="kick">'+E(first(v('nom1')))+' &amp; '+E(first(v('nom2')))+'</span></div><div class="view"><h1>'+t+'</h1>'+(intro?'<p class="intro">'+intro+'</p>':'')}
+function inp(k,l,type,extra){return '<label for="f_'+k+'">'+l+'</label><input id="f_'+k+'" name="'+k+'" type="'+(type||'text')+'" value="'+E(v(k))+'" '+(extra||'')+'>'}
+function area(k,l,rows,ph){return '<label for="f_'+k+'">'+l+'</label><textarea id="f_'+k+'" name="'+k+'" rows="'+(rows||4)+'" placeholder="'+E(ph||'')+'">'+E(v(k))+'</textarea>'}
+function chk(k,t){return '<label class="check"><input type="checkbox" name="'+k+'" '+(v(k)==='oui'?'checked':'')+'><span>'+t+'</span></label>'}
+function saveBar(){return '<div class="save"><button class="btn" type="submit" style="width:100%">Enregistrer</button></div></form></div>'}
+
+var VIEWS={
+ journee:function(){var f=v('formule');return top('Votre journée')+'<form id="fm" novalidate>'+inp('date','Date du mariage','date')+inp('invites','Nombre d’invités (environ)','number','min="0" step="10" inputmode="numeric"')+inp('ceremonie','Lieu de la cérémonie (nom et ville)')+inp('reception','Lieu de la réception (nom)')+inp('reception_adresse','Adresse du lieu de réception')+
+  '<label>Prestation réservée</label><div class="chips">'+['photo','vidéo','photo et vidéo'].map(function(x){return '<label class="chip"><input type="radio" name="formule" value="'+x+'" '+(f===x?'checked':'')+'><span>'+x.charAt(0).toUpperCase()+x.slice(1)+'</span></label>'}).join('')+'</div>'+
+  inp('contact_nom','Contact sur place le jour J (témoin, organisateur)')+inp('contact_tel','Son téléphone','tel','autocomplete="off"')+saveBar()},
+ deroule:function(){return top('Le déroulé et les photos de groupe','Indiquez les horaires prévus, même approximatifs. Vous pourrez les ajuster jusqu’au dernier moment.')+'<form id="fm" novalidate>'+area('deroule','Le déroulé prévu',7,'Ex. 10 h préparatifs, 15 h cérémonie, 16 h 30 cocktail…')+area('groupes','Les photos de groupe indispensables',5,'Ex. les mariés avec chaque famille, les témoins…')+saveBar()},
+ presta:function(){var m=prestaMap();return top('Vos prestataires','Ajoutez-les au fur et à mesure. Chaque changement est envoyé à Lmoh.')+'<form id="fm" novalidate>'+
+  PRESTA.map(function(p){var x=m[p[0]]||{};return '<div class="pr"><h3>'+p[1]+'</h3><div class="g"><input type="text" name="p_'+p[0]+'_nom" placeholder="'+p[2]+'" aria-label="'+p[1]+' : '+p[2].toLowerCase()+'" value="'+E(x.nom)+'"><input type="tel" name="p_'+p[0]+'_tel" placeholder="Téléphone" aria-label="'+p[1]+' : téléphone" value="'+E(x.tel)+'"><input type="text" name="p_'+p[0]+'_ig" placeholder="Instagram (@…)" aria-label="'+p[1]+' : compte Instagram" autocapitalize="none" value="'+E(x.instagram)+'"></div></div>'}).join('')+
+  chk('contact_presta','Lmoh peut contacter ces prestataires pour préparer le reportage (horaires, accès, déroulé).')+chk('mention_presta','Lmoh peut citer et identifier ces prestataires dans ses publications (Instagram, site).')+saveBar()},
+ vous:function(){return top('Vous deux et vos accords')+'<form id="fm" novalidate>'+inp('nom1','Prénom et nom')+inp('nom2','Prénom et nom')+inp('email','E-mail','email','autocomplete="email"')+inp('tel','Téléphone','tel','autocomplete="tel"')+inp('adresse','Adresse postale (pour vos tirages ou votre album)','text','autocomplete="street-address"')+
+  area('envies','Ce qui compte le plus pour vous ce jour-là',4)+inp('instagram','Vos comptes Instagram (facultatif)','text','autocapitalize="none" placeholder="@…"')+
+  chk('image','Nous autorisons LMOH Photography à publier une sélection de nos photos et vidéos sur son site et ses réseaux, sans nos noms.')+chk('offres','Nous acceptons de recevoir les offres de LMOH Photography (anniversaire de mariage, naissance, tableau photo interactif…).')+saveBar()}
+};
+function collect(f,view){
+  var n=JSON.parse(JSON.stringify(D));
+  if(view==='presta'){
+    n.prestataires=PRESTA.map(function(p){var g=function(s){var el=f.elements['p_'+p[0]+'_'+s];return el?el.value.trim():''};return {k:p[0],type:p[1],nom:g('nom'),tel:g('tel'),instagram:insta(g('ig'))}}).filter(function(p){return p.nom||p.tel||p.instagram});
+    n.contact_presta=f.elements.contact_presta.checked?'oui':'non';n.mention_presta=f.elements.mention_presta.checked?'oui':'non';
+  }else{
+    [].slice.call(f.elements).forEach(function(el){if(!el.name)return;if(el.type==='checkbox')n[el.name]=el.checked?'oui':'non';else if(el.type==='radio'){if(el.checked)n[el.name]=el.value}else n[el.name]=el.value.trim()});
+  }
+  return n;
+}
+function payload(n){
+  var pr=(n.prestataires||[]);
+  var p={action:'save',code:CODE,type:'mariage',data:JSON.stringify(n),prestataires:JSON.stringify(pr.map(function(x){return {type:x.type,nom:x.nom,tel:x.tel,instagram:x.instagram}})),presta_resume:pr.map(function(x){return x.type+' : '+[x.nom,x.instagram,x.tel].filter(Boolean).join(', ')}).join(' | ')};
+  ['nom1','nom2','email','tel','adresse','date','invites','ceremonie','reception','reception_adresse','formule','contact_nom','contact_tel','deroule','groupes','envies','instagram','source','image','offres','contact_presta','mention_presta'].forEach(function(k){p[k]=n[k]||''});
+  return p;
+}
+function show(view){
+  if(!VIEWS[view]){home();window.scrollTo(0,0);return}
+  app.innerHTML=VIEWS[view]();window.scrollTo(0,0);
+  var f=document.getElementById('fm');
+  f.addEventListener('submit',function(ev){ev.preventDefault();var n=collect(f,view);
+    if(view==='vous'&&(!n.nom1||!n.nom2||!/^\S+@\S+\.\S+$/.test(n.email||''))){toast('Indiquez vos deux noms et une adresse e-mail valide.');return}
+    var b=f.querySelector('button[type=submit]');b.disabled=true;b.textContent='Enregistrement…';
+    post(payload(n)).then(function(){D=n;toast('Enregistré. Lmoh est prévenu.');location.hash='#'+CODE})
+    .catch(function(){b.disabled=false;b.textContent='Enregistrer';toast('L’enregistrement n’a pas fonctionné. Vérifiez votre connexion et réessayez.')});
+  });
+}
+function route(){var h=decodeURIComponent(location.hash.replace(/^#/,'')).split('/');if(h[0]!==CODE)return start();show(h[1]||'')}
+function fail(){app.innerHTML='<div class="center"><span class="kick muted">LMOH Photography</span><h1>Ce lien ne fonctionne pas</h1><p class="muted">Vérifiez que vous avez bien ouvert le lien reçu par SMS, ou écrivez-moi : je vous renvoie votre accès.</p><a class="btn" href="'+WA+'" target="_blank" rel="noopener">'+waIcon('#fff')+'Écrire à Lmoh</a></div>'}
+function start(){
+  var c=decodeURIComponent(location.hash.replace(/^#/,'')).split('/')[0].replace(/[^a-z0-9]/gi,'');
+  if(!c){try{c=localStorage.getItem(KEY)||''}catch(e){}if(c)history.replaceState(null,'','#'+c)}
+  if(!c){fail();return}
+  CODE=c;
+  post({action:'load',code:c}).then(function(t){var d=JSON.parse(t);if(!d||!d.nom1)throw new Error('vide');D=d;try{localStorage.setItem(KEY,c)}catch(e){}window.removeEventListener('hashchange',route);window.addEventListener('hashchange',route);route()}).catch(fail);
+}
+start();
+})();
+</script>
+</body>
+</html>
