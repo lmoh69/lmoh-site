@@ -1,0 +1,20 @@
+{
+  "error": "The generated audio was blocked by content-safety filters: content that may be related to copyright restrictions. The audio track was flagged, not your prompt or reference media \u2014 if you do not need audio, set generate_audio to false and retry. You have not been charged for this request.",
+  "input": {
+    "aspect_ratio": "9:16",
+    "duration": 4,
+    "first_frame_url": "https://raw.githubusercontent.com/lmoh69/lmoh-site/main/maquette/manga-couple/anim6/kf06-coin-b.jpg",
+    "generate_audio": true,
+    "prompt": "Anime, same art style and characters. The grandma holds her phone right next to the bottom-right corner of the wedding canvas standing on the sideboard; the small golden wireless signal arcs pulse and glow brighter; a soft magical chime. She smiles and says softly in French, warm elderly woman voice, lips synced: \u00ab Et voil\u00e0. \u00bb The grandpa and granddaughter lean in, amazed. The photo on the canvas stays perfectly still. Only this French dialogue. No music, no subtitles.",
+    "resolution": "720p"
+  },
+  "input_truncated": false,
+  "metrics": {
+    "inference_time": 136.85159,
+    "queue_time": 0.041009,
+    "total_time": 136.892599
+  },
+  "model": "seedance-2.0",
+  "request_id": "d9ec0f5c8ee9ed72ec2df87bc481b058",
+  "status": "FAILED"
+}
