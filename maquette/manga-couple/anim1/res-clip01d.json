@@ -1,0 +1,8 @@
+{
+  "detail": "Request is still in progress",
+  "model": "seedance-2.0",
+  "request_id": "819d0249b20335b4add844a4ab922384",
+  "response_url": "https://api.segmind.com/v2/requests/819d0249b20335b4add844a4ab922384",
+  "status": "PROCESSING",
+  "status_url": "https://api.segmind.com/v2/requests/819d0249b20335b4add844a4ab922384/status"
+}
