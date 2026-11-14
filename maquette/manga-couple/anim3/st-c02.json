@@ -1,0 +1,11 @@
+{
+  "error": "Insufficient credits. You have 0.53 credits available (1.58 of your 2.11 credits are held by requests still in progress), but need at least 1.58 credits to proceed. Recharge [here](https://platform.segmind.com/billing?type=TOPUP)",
+  "metrics": {
+    "total_time": 0.039305
+  },
+  "model": "seedance-2.0",
+  "request_id": "3fda94be515667e68626b434108101d5",
+  "response_url": "https://api.segmind.com/v2/requests/3fda94be515667e68626b434108101d5",
+  "status": "FAILED",
+  "status_url": "https://api.segmind.com/v2/requests/3fda94be515667e68626b434108101d5/status"
+}
