@@ -80,7 +80,7 @@ CATALOGUE VIDÉOS (id | titre | description) :
 
 req = {"systemInstruction": {"parts": [{"text": SYSTEM}]},
        "contents": [{"role": "user", "parts": [{"text": prompt}]}],
-       "generationConfig": {"responseMimeType": "application/json", "temperature": 0.9}}
+       "generationConfig": {"responseMimeType": "application/json", "temperature": 0.9, "thinkingConfig": {"thinkingLevel": "low"}}}
 json.dump(req, open('journal/request.json', 'w', encoding='utf-8'), ensure_ascii=False)
 json.dump({"sujet": sujet, "kw_fr": kw_fr, "kw_en": kw_en, "categorie": categorie, "restants": restants},
           open('journal/request-meta.json', 'w', encoding='utf-8'), ensure_ascii=False)
