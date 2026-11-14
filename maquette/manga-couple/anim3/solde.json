@@ -1,0 +1,13 @@
+{
+  "metrics": {},
+  "model": "seedance-2.0",
+  "output": "https://images.segmind.com/generations/577238b0-51b5-45e4-87e7-900714e211be/e940a12f19327fae7f7e6932c5d982f6.mp4",
+  "request_id": "e940a12f19327fae7f7e6932c5d982f6",
+  "status": "COMPLETED",
+  "video": {
+    "content_type": "video/mp4",
+    "file_name": "e940a12f19327fae7f7e6932c5d982f6.mp4",
+    "file_size": "3303415",
+    "url": "https://images.segmind.com/generations/577238b0-51b5-45e4-87e7-900714e211be/e940a12f19327fae7f7e6932c5d982f6.mp4"
+  }
+}
