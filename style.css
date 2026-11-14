@@ -83,6 +83,8 @@ nav.main a,nav.main button{font-size:.85rem}
 .hero .cue span::after{content:"";position:absolute;left:0;top:-42px;width:1px;height:42px;background:#fff;animation:drip 2.2s var(--ease) infinite}
 @keyframes drip{to{top:42px}}
 @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.theme-lbl{position:absolute;z-index:3;left:1.25rem;bottom:calc(1.9rem + env(safe-area-inset-bottom,0px));font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.85);text-shadow:0 1px 8px rgba(0,0,0,.4);pointer-events:none}
+@media(max-width:600px){.theme-lbl{font-size:.56rem;letter-spacing:.18em}}
 .sound{position:absolute;z-index:3;right:1.25rem;bottom:calc(1.6rem + env(safe-area-inset-bottom,0px));font:inherit;font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;color:#fff;background:none;border:1px solid rgba(255,255,255,.6);padding:.55rem 1rem;cursor:pointer;display:none}
 /* Animations au défilement */
 .rv{opacity:0;transform:translateY(40px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease)}
