@@ -12,3 +12,5 @@ publie : seance-photo-couple-lyon-spots
 publie : photographe-seminaire-lyon-checklist
 2026-11-06
 publie : video-seminaire-aftermovie-evenement-entreprise-lyon
+2026-11-14
+publie : photographe-soiree-entreprise-lyon
