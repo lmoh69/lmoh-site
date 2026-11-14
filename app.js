@@ -79,6 +79,25 @@ var hero=document.getElementById('hero'),slides=[].slice.call(document.querySele
 function prep(n){var im=slides[n].querySelector('img');if(im.dataset.src&&!im.getAttribute('src'))im.src=im.dataset.src}
 slides[0].classList.add('on');prep(1);
 if(!reduce)timer=setInterval(function(){slides[si].classList.remove('on');si=(si+1)%slides.length;prep(si);slides[si].classList.add('on');prep((si+1)%slides.length)},6500);
+/* Thème photo du mois : les photos qui défilent changent de thème chaque mois, puis le film du mois prend le relais */
+var T0=Date.now(),INTRO=11000;
+var THEMES=[['nb','Noir et blanc'],['details','Les détails'],['couple','Couples'],['mariage2','Au bord du lac'],['chateau','Château'],['soiree','La soirée'],['cannes','Sur la Côte'],['mariage','Le grand jour']];
+function heroTheme(P){
+ var th=THEMES[SEED%THEMES.length],pool=(P[th[0]]||[]).slice();if(pool.length<4)return;
+ var land=innerWidth>=innerHeight,fit=pool.filter(function(it){return land?it[1]>=it[2]*1.2:it[2]>it[1]*1.1});
+ var pick=shuffle(fit.length>=4?fit:pool,41).slice(0,5);
+ var box=document.getElementById('slides');if(!box)return;
+ var first=new Image();first.onload=function(){
+  if(!document.getElementById('slides'))return;
+  if(timer){clearInterval(timer);timer=null}
+  pick.forEach(function(it,i){var d=document.createElement('div');d.className='slide';d.innerHTML='<img alt="">';var im=d.querySelector('img');if(i===0)im.src=it[0];else im.dataset.src=it[0];box.appendChild(d)});
+  var old=slides;slides=[].slice.call(box.querySelectorAll('.slide')).slice(old.length);
+  old.forEach(function(o){o.classList.remove('on')});si=0;slides[0].classList.add('on');prep(1);
+  setTimeout(function(){old.forEach(function(o){o.remove()})},2000);
+  if(!reduce)timer=setInterval(function(){slides[si].classList.remove('on');si=(si+1)%slides.length;prep(si);slides[si].classList.add('on');prep((si+1)%slides.length)},5000);
+  if(!document.getElementById('themeLbl'))hero.insertAdjacentHTML('beforeend','<span class="theme-lbl" id="themeLbl">Ce mois-ci · '+th[1]+'</span>');
+ };first.src=pick[0][0];
+}
 function heroVideo(src,poster){
  var c=navigator.connection||{};if(reduce||c.saveData||/2g/.test(c.effectiveType||''))return;
  var v=document.createElement('video');v.muted=true;v.loop=true;v.autoplay=true;v.playsInline=true;v.setAttribute('playsinline','');v.setAttribute('muted','');v.preload='auto';v.poster=poster;v.src=src;v.style.opacity='0';v.style.transition='opacity 1.2s ease';
