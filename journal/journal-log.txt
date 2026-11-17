@@ -18,3 +18,5 @@ publie : photographe-soiree-entreprise-lyon
 publie : mariage-en-hiver-pourquoi-cest-une-bonne-idee
 2026-11-14
 publie : mariage-en-hiver-pourquoi-cest-une-bonne-idee-2
+2026-11-17
+publie : photographe-salon-professionnel-lyon-congres
