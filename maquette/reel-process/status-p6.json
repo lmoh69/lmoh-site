@@ -1,0 +1,10 @@
+{
+  "metrics": {
+    "queue_time": 0.041261
+  },
+  "model": "seedance-2.0",
+  "request_id": "1306bf2b7e8234d3bf1637fed0c64e16",
+  "response_url": "https://api.segmind.com/v2/requests/1306bf2b7e8234d3bf1637fed0c64e16",
+  "status": "PROCESSING",
+  "status_url": "https://api.segmind.com/v2/requests/1306bf2b7e8234d3bf1637fed0c64e16/status"
+}
