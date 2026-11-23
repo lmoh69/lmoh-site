@@ -1,0 +1,14 @@
+{
+  "metrics": {
+    "cost": 0.6,
+    "inference_time": 52.439172,
+    "queue_time": 0.045847,
+    "remaining_credits": 0.8224610329,
+    "total_time": 52.485019
+  },
+  "model": "veo-3.1-fast",
+  "request_id": "449520588d7fd9ed952c4678b4b5b738",
+  "response_url": "https://api.segmind.com/v2/requests/449520588d7fd9ed952c4678b4b5b738",
+  "status": "COMPLETED",
+  "status_url": "https://api.segmind.com/v2/requests/449520588d7fd9ed952c4678b4b5b738/status"
+}
