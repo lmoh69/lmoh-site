@@ -190,7 +190,7 @@ function payload(n){
 function finOffre(){if(!LIV.fin)return null;var f=new Date(LIV.fin+'T23:59:59'),n=new Date();var j=Math.ceil((f-n)/864e5);return j>=0?{j:j,txt:f.toLocaleDateString('fr-FR',{day:'numeric',month:'long'})}:null}
 function filmView(){
   var off=finOffre(),film=!!LIV.film,names=E(first(v('nom1')))+' &amp; '+E(first(v('nom2')));
-  var h='<header class="hero fh" style="background-image:url(../photos/couple/p1020416.jpg)"><div class="logo"><b>P</b><span><strong>LMOH</strong>PHOTOGRAPHY</span></div><div class="hero-txt"><span class="kick" style="color:#fff">'+names+'</span><h1>'+(film?'Votre film est prêt':'Vos photos sont prêtes')+'</h1></div></header>'+
+  var h='<header class="hero fh" style="'+heroBg()+'"><div class="logo"><b>P</b><span><strong>LMOH</strong>PHOTOGRAPHY</span></div><div class="hero-txt"><span class="kick" style="color:#fff">'+names+'</span><h1>'+(film?'Votre film est prêt':'Vos photos sont prêtes')+'</h1></div></header>'+
   '<div class="fv">'+(past()?'':'<a class="fback" href="#'+CODE+'">← Retour à mon espace</a>');
   if(film){h+='<div class="player"><iframe src="'+E(LIV.film)+'" title="Votre film de mariage" allow="autoplay; fullscreen" allowfullscreen></iframe></div>'+
    '<p class="small fmeta">Si la lecture ne démarre pas tout de suite, patientez quelques secondes : votre film se prépare.</p>'+
@@ -212,7 +212,7 @@ function filmView(){
     window.open('https://wa.me/33651287900?text='+encodeURIComponent('Bonjour Lmoh, nous aimerions commander le Tableau Vivant en '+t[0]+' ('+p+' €'+(off?', offre de livraison':'')+'). Pouvez-vous nous aider à choisir la photo ? Code espace : '+CODE),'_blank','noopener')};
 }
 function past(){var d=daysLeft();return d!=null&&d<0}
-function waitView(){app.innerHTML='<header class="hero fh" style="background-image:url(../photos/couple/p1020416.jpg)"><div class="logo"><b>P</b><span><strong>LMOH</strong>PHOTOGRAPHY</span></div><div class="hero-txt"><span class="kick" style="color:#fff">'+E(first(v('nom1')))+' &amp; '+E(first(v('nom2')))+'</span><h1>Votre film arrive bientôt</h1></div></header><div class="fv"><p class="intro" style="margin:8px 0 18px">Je termine les derniers détails. Vous recevrez un SMS dès que votre film sera prêt, ici même.</p><a class="btn" href="'+WA+'" target="_blank" rel="noopener">'+waIcon('#fff')+'Une question ? Écrire à Lmoh</a></div>'}
+function waitView(){app.innerHTML='<header class="hero fh" style="'+heroBg()+'"><div class="logo"><b>P</b><span><strong>LMOH</strong>PHOTOGRAPHY</span></div><div class="hero-txt"><span class="kick" style="color:#fff">'+E(first(v('nom1')))+' &amp; '+E(first(v('nom2')))+'</span><h1>Votre film arrive bientôt</h1></div></header><div class="fv"><p class="intro" style="margin:8px 0 18px">Je termine les derniers détails. Vous recevrez un SMS dès que votre film sera prêt, ici même.</p><a class="btn" href="'+WA+'" target="_blank" rel="noopener">'+waIcon('#fff')+'Une question ? Écrire à Lmoh</a></div>'}
 function show(view){
   if(past()){if(LIV.film||LIV.galerie)filmView();else waitView();window.scrollTo(0,0);return}
   if(view==='film'&&(LIV.film||LIV.galerie)){filmView();window.scrollTo(0,0);return}
