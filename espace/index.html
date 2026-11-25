@@ -145,7 +145,7 @@ function home(){
   item('deroule','Le déroulé et les photos de groupe',s.dr?'<span class="st ok">Complet</span>':'<span class="st todo">À compléter</span>')+
   item('presta','Vos prestataires',s.pc?'<span class="st">'+s.pc+' renseigné'+(s.pc>1?'s':'')+'</span>':'<span class="st todo">À compléter</span>')+
   item('vous','Vous deux et vos accords',s.vo?'<span class="st ok">Complet</span>':'<span class="st todo">À compléter</span>')+
-  '<a href="../#/client"><span class="t"><span class="n">Vos photos et votre film</span><span class="st">Disponibles ici après le mariage</span></span>'+chev()+'</a></nav>';
+  (LIV.film||LIV.galerie?item('film',LIV.film?'Votre film':'Vos photos','<span class="st ok">'+(LIV.film?'Votre film est prêt':'Vos photos sont prêtes')+'</span>'):'<a href="../#/client"><span class="t"><span class="n">Vos photos et votre film</span><span class="st">Disponibles ici après le mariage</span></span>'+chev()+'</a>')+'</nav>';
   if(!standalone()&&!localStorage.getItem('lmoh_install_ok')){h+='<section class="install"><strong>Gardez votre espace sur votre téléphone</strong><ol><li>Touchez le bouton Partager (iPhone) ou le menu ⋮ (Android).</li><li>Choisissez « Sur l’écran d’accueil ».</li></ol><button class="link" id="instOk">J’ai compris</button></section>'}
   h+='<div class="foot"><a class="btn" href="'+WA+'" target="_blank" rel="noopener">'+waIcon('#fff')+'Une question ? Écrire à Lmoh</a><p class="small" style="margin:0;text-align:center">Votre lien est personnel : ne le partagez qu’avec vos proches.</p></div>';
   app.innerHTML=h;
