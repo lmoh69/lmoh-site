@@ -135,7 +135,7 @@ function standalone(){return window.matchMedia('(display-mode: standalone)').mat
 function home(){
   var s=status(),dl=daysLeft(),names=E(first(v('nom1')))+' &amp; '+E(first(v('nom2')));
   var conf=v('verifie');try{if(localStorage.getItem('lmoh_conf_'+CODE))conf='oui'}catch(e){}
-  var h='<header class="hero" style="background-image:url(../photos/couple/p1020416.jpg)"><div class="logo"><b>P</b><span><strong>LMOH</strong>PHOTOGRAPHY</span></div>'+
+  var h='<header class="hero" style="'+heroBg()+'"><div class="logo"><b>P</b><span><strong>LMOH</strong>PHOTOGRAPHY</span></div>'+
   '<div class="hero-txt"><span class="kick">Votre espace mariés</span><h1>'+names+'</h1><span class="sub">'+E(dateFr())+(v('reception')?' · '+E(v('reception')):'')+'</span></div></header>'+
   '<div class="cards">'+(dl!=null&&dl>=0?'<div class="card"><span class="big">'+(dl===0?'Jour J':'J–'+dl)+'</span><span class="small">'+(dl===0?'C’est aujourd’hui':'avant le grand jour')+'</span></div>':'')+
   '<div class="card" style="flex:1.4"><span class="small">Votre fiche est complète à</span><span class="bar"><i><b style="width:'+s.pct+'%"></b></i><strong>'+s.pct+'&nbsp;%</strong></span></div></div>';
