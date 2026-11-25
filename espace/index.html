@@ -200,7 +200,7 @@ function filmView(){
   h+='<div class="fsep"></div><section class="offer">'+(off?'<span class="badge">Offre de livraison · −15 %</span>':'')+
    '<h2>'+(film?'Gardez votre film au mur':'Vos photos, vivantes au mur')+'</h2>'+
    '<p>Votre plus belle photo, imprimée sur toile et encadrée. Approchez votre téléphone du petit repère au coin du cadre : '+(film?'votre film démarre':'un diaporama de vos plus belles photos démarre, en musique')+'. Sans application, sans QR code.</p>'+
-   '<div class="wall"><div class="frame"><div></div></div><div class="ph"><div></div></div><small>Le Tableau Vivant</small></div>'+
+   wall()+
    '<div class="steps"><div><b>1</b>Vous choisissez la photo et la taille</div><div><b>2</b>Je prépare et teste votre tableau</div><div><b>3</b>Livré chez vous dans un coffret</div></div>'+
    '<div class="sizes" role="radiogroup" aria-label="Taille du tableau">'+TV.map(function(t,i){var p=off?Math.round(t[2]*0.85):t[2];return '<label class="sz"><input type="radio" name="tv" value="'+i+'" '+(i===1?'checked':'')+'><span class="d"><b>'+t[0]+'</b><span>'+t[1]+'</span></span>'+(off?'<s>'+t[2]+' €</s>':'')+'<strong>'+p+' €</strong></label>'}).join('')+'</div>'+
    (off?'<div class="count">−15 % jusqu’au <b>'+off.txt+'</b>'+(off.j>0?', encore <b>'+off.j+' jour'+(off.j>1?'s':'')+'</b>':', <b>dernier jour</b>')+'.</div>':'')+
