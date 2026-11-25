@@ -191,7 +191,7 @@ function finOffre(){if(!LIV.fin)return null;var f=new Date(LIV.fin+'T23:59:59'),
 function filmView(){
   var off=finOffre(),film=!!LIV.film,names=E(first(v('nom1')))+' &amp; '+E(first(v('nom2')));
   var h='<header class="hero fh" style="background-image:url(../photos/couple/p1020416.jpg)"><div class="logo"><b>P</b><span><strong>LMOH</strong>PHOTOGRAPHY</span></div><div class="hero-txt"><span class="kick" style="color:#fff">'+names+'</span><h1>'+(film?'Votre film est prêt':'Vos photos sont prêtes')+'</h1></div></header>'+
-  '<div class="fv"><a class="fback" href="#'+CODE+'">← Retour à mon espace</a>';
+  '<div class="fv">'+(past()?'':'<a class="fback" href="#'+CODE+'">← Retour à mon espace</a>');
   if(film){h+='<div class="player"><iframe src="'+E(LIV.film)+'" title="Votre film de mariage" allow="autoplay; fullscreen" allowfullscreen></iframe></div>'+
    '<p class="small fmeta">Si la lecture ne démarre pas tout de suite, patientez quelques secondes : votre film se prépare.</p>'+
    (LIV.dl?'<a class="btn" href="'+E(LIV.dl)+'" target="_blank" rel="noopener">Télécharger en qualité originale</a>':'')}
