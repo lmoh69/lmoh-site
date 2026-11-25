@@ -109,7 +109,9 @@ var HOOK='https://hook.eu1.make.com/6nnxb98n0ytnw2abjia5s9o5bq1ugxd7';
 var KEY='lmoh_espace_code';
 var PRESTA=[['lieu','Lieu de réception','Nom du contact sur place'],['planner','Wedding planner, organisation','Nom'],['traiteur','Traiteur','Nom'],['fleuriste','Fleuriste','Nom'],['deco','Décorateur, scénographie','Nom'],['patissier','Pâtissier, pièce montée','Nom'],['dj','DJ, musiciens, animation','Nom'],['coiffure','Coiffure','Nom'],['maquillage','Maquillage','Nom'],['robe','Robe, costume (créateur ou boutique)','Nom'],['negafa','Négafa','Nom'],['autre','Autre prestataire','Nom et métier']];
 var WA='https://wa.me/33651287900?text='+encodeURIComponent('Bonjour Lmoh, j’ai une question sur notre mariage : ');
-var app=document.getElementById('app'),D=null,CODE='';
+var app=document.getElementById('app'),D=null,CODE='',LIV={};
+var HOOK_LIV='https://hook.eu1.make.com/9flwb01bnmb7co5w99d47vppaih5xnsl';
+var TV=[['60 × 40 cm','Pour un bureau, une chambre',99],['75 × 50 cm','Le plus choisi, au-dessus d’un buffet',149],['90 × 60 cm','Pour un salon, au-dessus d’un canapé',229]];
 function E(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function v(k){return D&&D[k]?String(D[k]):''}
 function insta(x){x=String(x||'').trim();if(!x)return '';x=x.replace(/^(https?:\/\/)?(www\.)?instagram\.com\//i,'').replace(/[\/?#].*/,'').replace(/^@+/,'').replace(/\s+/g,'');return x?'@'+x:''}
