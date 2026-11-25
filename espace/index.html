@@ -216,7 +216,7 @@ function heroBg(){return LIV.couv?'background-image:url(\''+dimg(LIV.couv,1600)+
 function wall(){var t=LIV.tab?'<div class="own" style="background-image:url(\''+dimg(LIV.tab,1200)+'\')"></div>':'<div></div>';
   var poster=LIV.tel?dimg(LIV.tel,500):'';
   var p=(poster?'<div class="own" style="background-image:url(\''+poster+'\')"></div>':'<div></div>')+(LIV.clip?'<img src="https://lh3.googleusercontent.com/d/'+encodeURIComponent(LIV.clip)+'=s0-rw" alt="" onerror="this.remove()">':'');
-  return '<div class="wall"><div class="frame">'+t+'</div><div class="ph">'+p+'</div><small>Approchez votre téléphone, et la magie opère.</small></div>'}
+  return '<div class="wall"><div class="frame">'+t+'</div><div class="ph">'+p+'</div><small>Le Tableau Vivant</small></div>'}
 function past(){var d=daysLeft();return d!=null&&d<0}
 function waitView(){app.innerHTML='<header class="hero fh" style="'+heroBg()+'"><div class="logo"><b>P</b><span><strong>LMOH</strong>PHOTOGRAPHY</span></div><div class="hero-txt"><span class="kick" style="color:#fff">'+E(first(v('nom1')))+' &amp; '+E(first(v('nom2')))+'</span><h1>Votre film arrive bientôt</h1></div></header><div class="fv"><p class="intro" style="margin:8px 0 18px">Je termine les derniers détails. Vous recevrez un SMS dès que votre film sera prêt, ici même.</p><a class="btn" href="'+WA+'" target="_blank" rel="noopener">'+waIcon('#fff')+'Une question ? Écrire à Lmoh</a></div>'}
 function show(view){
