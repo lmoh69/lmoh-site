@@ -230,7 +230,7 @@ function start(){
   if(!c){try{c=localStorage.getItem(KEY)||''}catch(e){}if(c)history.replaceState(null,'','#'+c)}
   if(!c){fail();return}
   CODE=c;
-  post({action:'load',code:c}).then(function(t){var d=JSON.parse(t);if(!d||!d.nom1)throw new Error('vide');D=d;try{localStorage.setItem(KEY,c)}catch(e){}window.removeEventListener('hashchange',route);window.addEventListener('hashchange',route);route()}).catch(fail);
+  post({action:'load',code:c}).then(function(t){var d=JSON.parse(t);if(!d||!d.nom1)throw new Error('vide');D=d;try{localStorage.setItem(KEY,c)}catch(e){}return fetch(HOOK_LIV,{method:'POST',body:new URLSearchParams({code:c})}).then(function(r){return r.ok?r.json():{}}).catch(function(){return {}}).then(function(l){LIV=l||{};window.removeEventListener('hashchange',route);window.addEventListener('hashchange',route);route()})}).catch(fail);
 }
 start();
 })();
